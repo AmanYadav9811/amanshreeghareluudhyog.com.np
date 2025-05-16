@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Amanshree Gharelu Udyog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f5f2;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header, footer {
+      background-color: #4E342E;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    nav ul {
+      list-style: none;
+      background: #6D4C41;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 15px 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    nav ul li a:hover {
+      background: #5D4037;
+      border-radius: 6px;
+      transform: translateY(-2px);
+    }
+
+    .video-banner {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .video-banner video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-banner .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .video-banner .overlay p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      max-width: 800px;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #4E342E;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: #8D6E63;
+    }
+
+    .about-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .about-section p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      text-align: justify;
+    }
+
+    .about-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .team-member {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .team-member:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .team-img-container {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 5px solid #f1f1f1;
+    }
+
+    .team-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .team-member:hover .team-img-container img {
+      transform: scale(1.1);
+    }
+
+    .team-member h3 {
+      font-size: 1.4rem;
+      color: #3E2723;
+      margin-bottom: 8px;
+    }
+
+    .team-member p.position {
+      color: #8D6E63;
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    .team-member p.bio {
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+    }
+
+    .values-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .value-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px 25px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .value-icon {
+      font-size: 2.5rem;
+      color: #8D6E63;
+      margin-bottom: 20px;
+    }
+
+    .value-card h3 {
+      font-size: 1.3rem;
+      color: #3E2723;
+      margin-bottom: 15px;
+    }
+
+    .value-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer {
+      padding: 40px 20px;
+      background: linear-gradient(to right, #4E342E, #5D4037);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: #D7CCC8;
+    }
+
+    .footer-column p, .footer-column a {
+      margin-bottom: 12px;
+      display: block;
+      color: #f5f5f5;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #D7CCC8;
+      text-decoration: underline;
+    }
+
+    .contact-info {
+      margin-top: 15px;
+    }
+
+    .contact-info i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    #topBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #6D4C41;
+      color: white;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 99;
+      transition: all 0.3s;
+    }
+
+    #topBtn:hover {
+      background-color: #8D6E63;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      nav ul li {
+        margin: 0 8px;
+      }
+      
+      nav ul li a {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+      }
+      
+      .video-banner .overlay p {
+        font-size: 1.4rem;
+      }
+      
+      .about-section {
+        padding: 25px 20px;
+      }
+      
+      .team-container, .values-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .footer-column {
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Amanshree Gharelu Udhyog</h1>
+    <p>Paver Block Manufacturer SINCE 2081</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="catalogue.html">Catalogue</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="video-banner">
+    <video autoplay muted loop playsinline>
+  
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay">
+      <p>Building Nepal's Infrastructure Since 2081</p>
+    </div>
+  </section>
+
+  <main>
+
+    <div class="about-section">
+      <h2>Meet Our Founder</h2>
+      <p>Amanshree Gharelu Udhyog is a team of dedicated professionals who bring together decades of experience in construction, design, and manufacturing. Our team's expertise ensures that every product we create meets the highest standards of quality and durability.</p>
+      
+      <div class="team-container">
+        <div class="team-member">
+          <div class="team-img-container">
+            <img src="founder.jpg" alt="Founder">
+          </div>
+          <h3>Braj Narayan Yadav</h3>
+          <p class="position">Founder & CEO</p>
+          <p class="bio">With over 20 years of experience in construction, B.N Yadav established Amanshree with a vision to revolutionize paving solutions in Nepal.</p>
+        </div>
+    </div>
+    <div class="about-section">
+      <h2>Our Story</h2>
+      <p>Founded in 2081 BS, Amanshree Gharelu Udhyog began as a small family business which is first time in Rajbiarj, sapatri, with a vision to provide high-quality paving solutions to our community. What started as a modest operation has grown into a trusted name in the construction industry across Nepal. Our journey has been marked by continuous innovation, unwavering commitment to quality, and a deep understanding of our customers' needs.</p>
+      <p>From our humble beginnings in Rajbiraj, we've expanded our operations while maintaining our core values of integrity, craftsmanship, and customer satisfaction. Every paver block we manufacture carries the legacy of our founder's vision and the hard work of our dedicated team.</p>
+      <p>Today, we take pride in being one of the most reliable paver block manufacturers in the region, serving both residential and commercial clients with products that stand the test of time.</p>
+    </div>
+
+    <div class="about-section">
+      <h2>Our Vision & Mission</h2>
+      <p><strong>Vision:</strong> To lead the paver or block industry with innovative design, exceptional durability, and unmatched customer satisfaction, becoming a household name in every region we serve.</p>
+      <p><strong>Mission:</strong> We are committed to transforming Nepal's infrastructure landscape by providing high-quality, eco-friendly paving solutions. Through continuous innovation, skilled craftsmanship, and ethical business practices, we aim to exceed customer expectations while contributing to sustainable development.</p>
+      <p>At Amanshree Gharelu Udhyog, we envision a future where every road, pathway, and public space in Nepal benefits from our durable and aesthetically pleasing paving solutions. Our mission drives us to maintain the highest standards in manufacturing while keeping our products accessible to all segments of society.</p>
+    </div>
+
+    <div class="about-section">
+      <h2>Our Core Values</h2>
+      <div class="values-container">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h3>Quality</h3>
+          <p>We never compromise on quality. Every product undergoes strict quality checks to ensure durability and performance.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Integrity</h3>
+          <p>Honesty and transparency guide all our business dealings with customers, suppliers, and employees.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Sustainability</h3>
+          <p>We adopt eco-friendly manufacturing processes and materials to minimize environmental impact.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Community</h3>
+          <p>We're committed to creating employment opportunities and supporting local development initiatives.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Innovation</h3>
+          <p>We continuously research and implement new techniques to improve our products and services.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Customer Focus</h3>
+          <p>Our customers are at the heart of everything we do, driving us to deliver exceptional service and support.</p>
+        </div>
+      </div>
+    </div>
+
+   
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>Aman Shree Gharelu Udhyog has been manufacturing high-quality paver blocks since 2081, serving both residential and commercial clients across the region.</p>
+        <div class="social-links">
+          <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location">
+            <i class="fas fa-map-marker-alt"></i>
+             <a href="https://www.tiktok.com/@amanshree.gharelu?_t=ZS-8wDFyzlRXZH&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Products Catalogue</a>
+        <a href="about.html">About Company</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> Rajbiraj-11, Hanumannagar Road, Saptari</p>
+          <p><i class="fas fa-phone"></i> 9842820524, 9801502594</p>
+          <p><i class="fas fa-envelope"></i> amanshreeudhyog@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Aman Shree Gharelu Udhyog. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button onclick="scrollToTop()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    window.onscroll = function() {
+      document.getElementById("topBtn").style.display =
+        document.body.scrollTop > 100 || document.documentElement.scrollTop > 100
+        ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

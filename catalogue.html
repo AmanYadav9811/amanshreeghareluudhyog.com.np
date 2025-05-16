@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catalogue | Amanshree Gharelu Udyog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f5f2;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header, footer {
+      background-color: #4E342E;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    nav ul {
+      list-style: none;
+      background: #6D4C41;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 15px 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    nav ul li a:hover {
+      background: #5D4037;
+      border-radius: 6px;
+      transform: translateY(-2px);
+    }
+
+    .video-banner {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .video-banner video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-banner .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .video-banner .overlay p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      max-width: 800px;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #4E342E;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: #8D6E63;
+    }
+
+    .products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .product-img-container {
+      height: 250px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f1f1;
+    }
+
+    .product img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product h3 {
+      font-size: 1.4rem;
+      color: #3E2723;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .product p {
+      font-size: 1rem;
+      text-align: center;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .product-specs {
+      margin-top: auto;
+      background: #f5f5f5;
+      padding: 12px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Where to Use Section Styles */
+    .usage-section {
+      margin: 60px 0;
+    }
+
+    .usage-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .usage-card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .usage-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .usage-img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .usage-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .usage-card:hover .usage-img img {
+      transform: scale(1.1);
+    }
+
+    .usage-content {
+      padding: 20px;
+    }
+
+    .usage-content h3 {
+      color: #5D4037;
+      margin-bottom: 15px;
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    .usage-content p {
+      color: #666;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .learn-more {
+      display: inline-block;
+      color: #8D6E63;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s;
+      text-align: center;
+      width: 100%;
+    }
+
+    .learn-more:hover {
+      color: #5D4037;
+    }
+
+    .learn-more i {
+      margin-left: 5px;
+      transition: transform 0.3s;
+    }
+
+    .learn-more:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      background-color: #f5f1e9;
+      padding: 60px 20px;
+      margin: 60px 0;
+      border-radius: 10px;
+    }
+
+    .benefits-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .benefits-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .benefit-icon {
+      color: #8D6E63;
+      font-size: 1.8em;
+      margin-top: 5px;
+    }
+
+    .benefit-text h4 {
+      color: #5D4037;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    .benefit-text p {
+      color: #666;
+    }
+
+    /* Stats Section */
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      padding: 40px 20px;
+      background-color: #f5f1e9;
+      flex-wrap: wrap;
+      margin-top: 50px;
+      border-radius: 10px;
+    }
+
+    .stat-box {
+      text-align: center;
+      padding: 25px;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      min-width: 220px;
+      margin: 10px;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .stat-box:hover {
+      transform: scale(1.05);
+    }
+
+    .years, .awards {
+      background-color: #8b4513;
+    }
+
+    .projects {
+      background-color: #d2b48c;
+      color: black;
+    }
+
+    .clients {
+      background-color: #3f2a1d;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stat-number {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 1em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      margin: 60px 0 40px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: #8D6E63;
+      color: white;
+      padding: 12px 30px;
+      margin-top: 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      font-size: 1.1em;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background-color: #6D4C41;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      padding: 40px 20px;
+      background: linear-gradient(to right, #4E342E, #5D4037);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: #D7CCC8;
+    }
+
+    .footer-column p, .footer-column a {
+      margin-bottom: 12px;
+      display: block;
+      color: #f5f5f5;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #D7CCC8;
+      text-decoration: underline;
+    }
+
+    .contact-info {
+      margin-top: 15px;
+    }
+
+    .contact-info i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    #topBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #6D4C41;
+      color: white;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 99;
+      transition: all 0.3s;
+    }
+
+    #topBtn:hover {
+      background-color: #8D6E63;
+      transform: translateY(-3px);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 99;
+      transition: all 0.3s;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul li {
+        margin: 0 8px;
+      }
+      
+      nav ul li a {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+      }
+      
+      .video-banner .overlay p {
+        font-size: 1.4rem;
+      }
+      
+      .products-container, .usage-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .footer-column {
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+
+      .stat-box {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Aman Shree Gharelu Udhyog</h1>
+    <p>Paver Block Manufacturer SINCE 2081</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="catalogue.html">Catalogue</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="video-banner">
+    <video autoplay muted loop playsinline>
+      <source src="factorytour.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay">
+      <p>Quality Paver Blocks for Stronger Foundations</p>
+    </div>
+  </section>
+
+  <main>
+    <h2>Our Paver Block Catalogue</h2>
+
+    <div class="products-container">
+      <div class="product">
+        <div class="product-img-container">
+          <img src="zig-zag.jpg" alt="Zigzag Paver Block">
+        </div>
+        <div class="product-content">
+          <h3>Zigzag Paver Block</h3>
+          <p>Ideal for dynamic, interlocking patterns with high stability and excellent load-bearing capacity.</p>
+          <div class="product-specs">
+            <strong>Coverage:</strong> 100 Sq Ft requires approx. 310 pieces
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img-container">
+          <img src="i-shaped.jpg" alt="I-shape Paver Block">
+        </div>
+        <div class="product-content">
+          <h3>I-shape Paver Block</h3>
+          <p>Designed for strong and durable paving solutions with interlocking design for stability.</p>
+          <div class="product-specs">
+            <strong>Coverage:</strong> 100 Sq Ft requires approx. 280s pieces
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img-container">
+          <img src="cosmic-paver.webp" alt="Cosmic Paver Block">
+        </div>
+        <div class="product-content">
+          <h3>Cosmic Paver Block</h3>
+          <p>Offers a unique contemporary look for elegant landscaping and modern architectural designs.</p>
+          <div class="product-specs">
+            <strong>Coverage:</strong> 100 Sq Ft requires approx. 180 pieces
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img-container">
+          <img src="milano.jpeg" alt="Milano Paver Block">
+        </div>
+        <div class="product-content">
+          <h3>Milano Paver Block</h3>
+          <p>Provides a sophisticated finish for modern driveways and patios with excellent durability.</p>
+          <div class="product-specs">
+            <strong>Coverage:</strong> 100 Sq Ft requires approx. 180 pieces
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img-container">
+          <img src="hexagon.webp" alt="Hexagon Paver Block">
+        </div>
+        <div class="product-content">
+          <h3>Hexagon Paver Block</h3>
+          <p>A versatile and timeless hexagonal design that creates beautiful honeycomb patterns.</p>
+          <div class="product-specs">
+            <strong>Coverage:</strong> 100 Sq Ft requires approx. 250 pieces
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img-container">
+          <img src="red tiles.webp" alt="Red Tiles and Cover Block">
+        </div>
+        <div class="product-content">
+          <h3>Red Tiles Block</h3>
+          <p>Durable and stylish blocks suitable for utility coverage and decorative flooring solutions.</p>
+          <div class="product-specs">
+            <strong>Available in multiple sizes and thicknesses</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img-container">
+          <img src="curve images.jpg" alt="Road curve Block">
+        </div>
+        <div class="product-content">
+          <h3>Road curve Block</h3>
+          <p>Durable and stylish blocks suitable for utility coverage and decorative Road foothpath area solutions.</p>
+          <div class="product-specs">
+            <strong>Available in multiple sizes and thicknesses</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img-container">
+          <img src="cover block.jpg" alt="cover Block">
+        </div>
+        <div class="product-content">
+          <h3>cover Block</h3>
+          <p> Cover blocks are used to maintain the required distance between the reinforcement 
+            bars and the outer surface of the concrete to ensure durability and prevent corrosion.</p>
+          <div class="product-specs">
+            <strong>Available in multiple sizes and thicknesses</strong>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-img-container">
+          <img src="yellow.webp" alt="cover Block">
+        </div>
+        <div class="product-content">
+          <h3>Yellow Tiles Block</h3>
+          <p> Cover blocks are used to maintain the required distance between the reinforcement 
+            bars and the outer surface of the concrete to ensure durability and prevent corrosion.</p>
+          <div class="product-specs">
+            <strong>Available in multiple sizes and thicknesses</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Where to Use Section -->
+    <section class="usage-section">
+      <h2>Where to Use Our Paver Blocks</h2>
+      <p class="usage-intro">
+        Our high-quality paver blocks are designed for diverse applications, offering durability, 
+        aesthetic appeal, and functionality for various settings. Here are the ideal uses for 
+        our premium paving solutions:
+      </p>
+
+      <div class="usage-grid">
+        <div class="usage-card">
+          <div class="usage-img">
+            <img src="Residential Driveways.jpg">
+          </div>
+          <div class="usage-content">
+            <h3>Residential Driveways</h3>
+            <p>Create stunning and durable driveways that enhance your home's curb appeal while withstanding heavy vehicle traffic.</p>
+            <a href="#driveway" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-img">
+            <img src="garden pathway.avif">
+          </div>
+          <div class="usage-content">
+            <h3>Garden Pathways</h3>
+            <p>Beautiful walkways that complement your landscape design while providing excellent drainage and slip resistance.</p>
+            <a href="#garden" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-img">
+            <img src="parking.jpg">
+          </div>
+          <div class="usage-content">
+            <h3>Commercial Parking</h3>
+            <p>Durable parking solutions for shopping complexes, offices, and public spaces that handle heavy traffic with ease.</p>
+            <a href="#commercial" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-img">
+            <img src="public path.avif">
+          </div>
+          <div class="usage-content">
+            <h3>Public Parks & Plazas</h3>
+            <p>Attractive and low-maintenance surfaces for public spaces that combine beauty with functionality.</p>
+            <a href="#public" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-img">
+            <img src="pool.webp">
+          </div>
+          <div class="usage-content">
+            <h3>Pool Decks & Patios</h3>
+            <p>Cool, slip-resistant surfaces perfect for pool areas and outdoor living spaces that stay comfortable in all weather.</p>
+            <a href="#pool" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-img">
+            <img src="roadside.jpg">
+          </div>
+          <div class="usage-content">
+            <h3>Road Construction</h3>
+            <p>Heavy-duty blocks designed for municipal road projects, offering superior load-bearing capacity and longevity.</p>
+            <a href="#road" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <div class="benefits-section">
+      <div class="benefits-container">
+        <h2 class="section-title">Why Choose Our Paver Blocks</h2>
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="benefit-text">
+              <h4>Exceptional Durability</h4>
+              <p>Withstand heavy loads and harsh weather conditions for years without cracking or fading.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-tint"></i></div>
+            <div class="benefit-text">
+              <h4>Superior Drainage</h4>
+              <p>Interlocking design allows excellent water permeability, preventing puddles and flooding.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-palette"></i></div>
+            <div class="benefit-text">
+              <h4>Design Versatility</h4>
+              <p>Available in multiple colors, patterns, and shapes to match any architectural style.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+            <div class="benefit-text">
+              <h4>Eco-Friendly</h4>
+              <p>Permeable surface reduces runoff and helps recharge groundwater naturally.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-wrench"></i></div>
+            <div class="benefit-text">
+              <h4>Easy Maintenance</h4>
+              <p>Individual blocks can be replaced without disturbing the entire paved area.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-rupee-sign"></i></div>
+            <div class="benefit-text">
+              <h4>Cost-Effective</h4>
+              <p>Long lifespan and minimal maintenance make them a smart investment over time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-container">
+      <div class="stat-box years">
+        <div class="stat-number" data-target="20">0</div>
+        <div class="stat-label">Years in Business</div>
+      </div>
+    
+      <div class="stat-box projects">
+        <div class="stat-number">1000+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      
+      <div class="stat-box awards">
+        <div class="stat-number" data-target="10">0</div>
+        <div class="stat-label">Awards Won</div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h3>Ready to Transform Your Space?</h3>
+      <p style="margin-bottom: 30px;">Contact us today to discuss your project requirements and get expert advice</p>
+      <a href="contact.html" class="cta-button">Get in Touch</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>Aman Shree Gharelu Udhyog has been manufacturing high-quality paver blocks since 2081, serving both residential and commercial clients across the region.</p>
+        <div class="social-links">
+          <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location">
+            <i class="fas fa-map-marker-alt"></i>
+             <a href="https://www.tiktok.com/@amanshree.gharelu?_t=ZS-8wDFyzlRXZH&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Products Catalogue</a>
+        <a href="about.html">About Company</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> Rajbiraj-11, Hanumannagar Road, Saptari"</p>
+          <p><i class="fas fa-phone"></i> 9842820524, 9801502594</p>
+          <p><i class="fas fa-envelope"></i> amanshreeudhyog@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Aman Shree Gharelu Udhyog. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/9842820524" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <button onclick="scrollToTop()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    window.onscroll = function() {
+      document.getElementById("topBtn").style.display =
+        document.body.scrollTop > 100 || document.documentElement.scrollTop > 100
+        ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    const speed = 200;
+
+    const animateCounters = (counter) => {
+      const target = +counter.getAttribute('data-target');
+      const increment = target / speed;
+
+      const updateCount = () => {
+        const count = +counter.innerText;
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target + '+';
+        }
+      };
+
+      updateCount();
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
+  </script>
+
+</body>
+</html>
