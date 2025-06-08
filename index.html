@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
   <title>Home - Amanshree Gharelu Udyog</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
@@ -19,6 +19,7 @@
       animation: gradientBG 15s ease infinite;
       color: #333;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     @keyframes gradientBG {
@@ -45,16 +46,23 @@
       font-size: 1.1em;
     }
 
+    /* Improved Mobile Menu */
     .nav-toggle {
       display: none;
       background: none;
       border: none;
       color: white;
-      font-size: 1.5em;
+      font-size: 1.8em;
       cursor: pointer;
       position: absolute;
-      top: 25px;
+      top: 20px;
       right: 20px;
+      z-index: 101;
+      padding: 10px;
+    }
+
+    nav {
+      position: relative;
     }
 
     nav ul {
@@ -64,6 +72,7 @@
       list-style: none;
       padding: 12px 0;
       flex-wrap: wrap;
+      transition: all 0.3s ease;
     }
 
     nav ul li {
@@ -78,6 +87,7 @@
       transition: color 0.3s ease;
       padding: 5px 0;
       position: relative;
+      display: inline-block;
     }
 
     nav ul li a:after {
@@ -99,10 +109,12 @@
       color: #f1c40f;
     }
 
+    /* Hero Section */
     .hero {
       background: linear-gradient(rgba(93, 64, 55, 0.8), rgba(93, 64, 55, 0.8)), 
                   url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
       height: 60vh;
+      min-height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -114,6 +126,7 @@
     .hero-content {
       max-width: 800px;
       animation: fadeIn 1s ease-in;
+      padding: 0 15px;
     }
     
     .hero h2 {
@@ -138,6 +151,7 @@
       font-weight: bold;
       transition: all 0.3s;
       font-size: 1.1em;
+      min-width: 200px;
     }
     
     .cta-button:hover {
@@ -146,6 +160,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
+    /* Main Content */
     main {
       padding: 40px 20px;
       text-align: center;
@@ -167,6 +182,7 @@
       color: #444;
     }
 
+    /* Catalogue Section */
     .catalogue-section {
       margin: 40px auto;
       max-width: 1000px;
@@ -248,6 +264,7 @@
       transform: scale(1.1);
     }
 
+    /* Stats Section */
     .stats-container {
       display: flex;
       justify-content: space-around;
@@ -334,6 +351,7 @@
       color: #ffcc80;
     }
 
+    /* Footer */
     footer {
       background-color: #3f2a1d;
       color: #fbe9e7;
@@ -454,6 +472,7 @@
       font-size: 0.9em;
     }
 
+    /* Floating Buttons */
     #topBtn {
       position: fixed;
       bottom: 25px;
@@ -518,23 +537,24 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 768px) {
+    /* ========== MOBILE STYLES ========== */
+    @media (max-width: 992px) {
+      /* General adjustments */
+      body {
+        font-size: 15px;
+      }
+      
+      /* Header adjustments */
       header h1 {
         font-size: 2em;
+        padding-right: 50px; /* Space for hamburger */
       }
 
-      .hero {
-        height: 50vh;
+      header p {
+        font-size: 1em;
       }
 
-      .hero h2 {
-        font-size: 2em;
-      }
-
-      .hero p {
-        font-size: 1.1em;
-      }
-
+      /* Improved mobile menu */
       .nav-toggle {
         display: block;
       }
@@ -542,10 +562,15 @@
       nav ul {
         flex-direction: column;
         display: none;
-        position: absolute;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        background: #333;
+        height: 100vh;
+        background: rgba(51, 51, 51, 0.98);
         z-index: 100;
+        padding-top: 80px;
+        justify-content: flex-start;
       }
 
       nav ul.active {
@@ -553,10 +578,37 @@
       }
 
       nav ul li {
-        margin: 10px 0;
+        margin: 15px 0;
         text-align: center;
       }
 
+      nav ul li a {
+        font-size: 1.2em;
+        padding: 10px 0;
+      }
+
+      /* Hero section */
+      .hero {
+        height: 50vh;
+        min-height: 350px;
+      }
+
+      .hero h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+      }
+
+      .hero p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+      }
+
+      .cta-button {
+        padding: 10px 25px;
+        font-size: 1em;
+      }
+
+      /* Main content */
       main h2 {
         font-size: 1.8em;
       }
@@ -566,14 +618,38 @@
         padding: 0 10px;
       }
 
+      /* Catalogue section */
       .catalogue-item {
         min-width: 200px;
+        padding: 15px;
       }
 
+      .catalogue-item img {
+        width: 160px;
+        height: 120px;
+      }
+
+      /* Stats section */
+      .stats-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stat-box {
+        width: 80%;
+        max-width: 300px;
+        margin: 10px 0;
+      }
+
+      /* Footer */
       .footer-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
+      }
+
+      .footer-section {
+        margin-bottom: 30px;
       }
 
       .footer-section h3:after {
@@ -584,27 +660,71 @@
       .footer-social {
         justify-content: center;
       }
+
+      /* Floating buttons */
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+        bottom: 80px;
+      }
+
+      #topBtn {
+        padding: 10px 13px;
+        font-size: 18px;
+        bottom: 20px;
+        right: 20px;
+      }
     }
 
-    @media (max-width: 480px) {
-      .hero h2 {
+    @media (max-width: 576px) {
+      /* Extra small devices */
+      header h1 {
         font-size: 1.8em;
       }
 
-      .stat-box {
-        min-width: 100%;
+      .hero {
+        height: 45vh;
+        min-height: 300px;
+      }
+
+      .hero h2 {
+        font-size: 1.6em;
+      }
+
+      .hero p {
+        font-size: 1em;
+      }
+
+      .catalogue-item {
+        min-width: 160px;
       }
 
       .catalogue-item img {
-        width: 150px;
-        height: 120px;
+        width: 140px;
+        height: 100px;
+      }
+
+      .stat-box {
+        width: 90%;
       }
 
       .footer-social a {
-        margin: 0 5px;
         width: 40px;
         height: 40px;
         font-size: 1.2em;
+        margin: 0 8px;
+      }
+    }
+
+    /* Landscape orientation adjustments */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero {
+        height: 100vh;
+      }
+      
+      nav ul {
+        padding-top: 60px;
       }
     }
   </style>
@@ -614,11 +734,13 @@
   <header>
     <h1>Aman Shree Gharelu Udhyog</h1>
     <p>Paver Block Manufacturer SINCE 2081</p>
-    <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+    <button class="nav-toggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
   <nav>
-    <ul>
+    <ul id="mainMenu">
       <li><a href="index.html">HOME</a></li>
       <li><a href="catalogue.html">CATALOGUE</a></li>
       <li><a href="about.html">ABOUT</a></li>
@@ -651,8 +773,8 @@
     <div class="catalogue-section">
       <h3 style="color: #5D4037; margin-bottom: 15px;">Our Products</h3>
       <div class="carousel-nav">
-        <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+        <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
       </div>
       <div class="catalogue-carousel" id="catalogueCarousel">
         <div class="catalogue-item">
@@ -777,7 +899,7 @@
       <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
       <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
-    <a href="https://www.tiktok.com/@amanshree.gharelu?_t=ZS-8wDFyzlRXZH&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.tiktok.com/@amanshree.gharelu?_t=ZS-8wDFyzlRXZH&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
     </div>
     
     <div class="footer-bottom">
@@ -792,12 +914,43 @@
   <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Mobile menu toggle
+    // Improved Mobile Menu Toggle
     const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('nav ul');
+    const navMenu = document.getElementById('mainMenu');
+    const body = document.body;
 
     navToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
+      navToggle.innerHTML = navMenu.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      
+      // Prevent scrolling when menu is open
+      if (navMenu.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+      } else {
+        body.style.overflow = '';
+      }
+    });
+
+    // Close menu when clicking outside or on a link
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav') && !e.target.closest('.nav-toggle') && 
+          navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        body.style.overflow = '';
+      }
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 992) {
+          navMenu.classList.remove('active');
+          navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          body.style.overflow = '';
+        }
+      });
     });
 
     // Back to top button
@@ -895,26 +1048,19 @@
       autoScrollInterval = setInterval(() => scrollCarousel('next'), 5000);
     });
 
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('nav ul li a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          navMenu.classList.remove('active');
-        }
-      });
-    });
-
     // Touch support for carousel
     let touchStartX = 0;
     let touchEndX = 0;
 
     carousel.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
+      clearInterval(autoScrollInterval);
     }, {passive: true});
 
     carousel.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
+      autoScrollInterval = setInterval(() => scrollCarousel('next'), 5000);
     }, {passive: true});
 
     function handleSwipe() {
@@ -924,6 +1070,22 @@
         scrollCarousel('prev');
       }
     }
+
+    // Prevent zooming on double-tap (mobile)
+    document.addEventListener('dblclick', function(e) {
+      e.preventDefault();
+    }, { passive: false });
+
+    // Improved touch feedback for buttons
+    document.querySelectorAll('button, a').forEach(button => {
+      button.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.95)';
+      });
+      
+      button.addEventListener('touchend', function() {
+        this.style.transform = '';
+      });
+    });
   </script>
 
 </body>
