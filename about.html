@@ -247,111 +247,184 @@
       color: #555;
     }
 
+    /* Updated Footer to match index.html */
     footer {
+      background-color: #3f2a1d;
+      color: #fbe9e7;
       padding: 40px 20px;
-      background: linear-gradient(to right, #4E342E, #5D4037);
+      text-align: center;
     }
 
     .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
       text-align: left;
     }
 
-    .footer-column h3 {
-      font-size: 1.3rem;
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin: 15px;
+    }
+
+    .footer-section h3 {
+      color: #f1c40f;
       margin-bottom: 20px;
+      font-size: 1.3em;
       position: relative;
       padding-bottom: 10px;
     }
 
-    .footer-column h3::after {
+    .footer-section h3:after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
       width: 50px;
       height: 2px;
-      background-color: #D7CCC8;
+      bottom: 0;
+      left: 0;
+      background-color: #f1c40f;
     }
 
-    .footer-column p, .footer-column a {
-      margin-bottom: 12px;
+    .footer-section p, .footer-section a {
+      margin-bottom: 10px;
       display: block;
-      color: #f5f5f5;
+      color: #fbe9e7;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-column a:hover {
-      color: #D7CCC8;
-      text-decoration: underline;
+    .footer-section a:hover {
+      color: #f1c40f;
     }
 
     .contact-info {
-      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
     }
 
     .contact-info i {
       margin-right: 10px;
+      color: #f1c40f;
       width: 20px;
       text-align: center;
     }
 
-    .social-links {
+    .footer-social {
       display: flex;
-      gap: 15px;
       margin-top: 20px;
+      justify-content: center;
     }
 
-    .social-links a {
+    .footer-social a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255,255,255,0.1);
+      margin: 0 10px;
+      color: #fbe9e7;
+      font-size: 1.4em;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
-      transition: all 0.3s;
+      background-color: rgba(241, 196, 15, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .social-links a:hover {
-      background-color: rgba(255,255,255,0.2);
-      transform: translateY(-3px);
+    .footer-social a:hover {
+      color: #f1c40f;
+      transform: translateY(-5px);
+      background-color: rgba(241, 196, 15, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .copyright {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.9rem;
-      opacity: 0.8;
+    .footer-social a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .footer-social a:hover::before {
+      left: 100%;
+    }
+
+    .footer-bottom {
+      background-color: #2c1a0f;
+      padding: 15px 0;
+      margin-top: 30px;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 0.9em;
     }
 
     #topBtn {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background-color: #6D4C41;
-      color: white;
-      border: none;
-      padding: 14px 18px;
-      border-radius: 50%;
       font-size: 20px;
+      background-color: #5D4037;
+      color: #fff;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       display: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
       z-index: 99;
-      transition: all 0.3s;
     }
 
     #topBtn:hover {
-      background-color: #8D6E63;
-      transform: translateY(-3px);
+      background-color: #4e342e;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 99;
+      transition: all 0.3s;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
 
     @media (max-width: 768px) {
@@ -377,20 +450,22 @@
       }
       
       .footer-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .footer-column {
+        flex-direction: column;
+        align-items: center;
         text-align: center;
       }
       
-      .footer-column h3::after {
+      .footer-section {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      
+      .footer-section h3:after {
         left: 50%;
         transform: translateX(-50%);
       }
       
-      .social-links {
+      .footer-social {
         justify-content: center;
       }
     }
@@ -408,7 +483,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="catalogue.html">Catalogue</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="blog.html">Blog</a></li> <!-- Added Blog Link -->
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -511,43 +586,53 @@
 
   <footer>
     <div class="footer-content">
-      <div class="footer-column">
+      <div class="footer-section">
         <h3>About Us</h3>
-        <p>Aman Shree Gharelu Udhyog has been manufacturing high-quality paver blocks since 2081, serving both residential and commercial clients across the region.</p>
-        <div class="social-links">
-          <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location">
-            <i class="fas fa-map-marker-alt"></i>
-          </a>
-          <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog?is_from_webapp=1&sender_device=pc" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        </div>
+        <p>Family-owned paver block manufacturer serving Rajbiraj and surrounding areas with quality products since 2081.</p>
       </div>
       
-      <div class="footer-column">
-        <h3>Quick Links</h3>
-        <a href="index.html">Home</a>
-        <a href="catalogue.html">Products Catalogue</a>
-        <a href="about.html">About Company</a>
-        <a href="blog.html">Blog</a> <!-- Added Blog Link -->
-        <a href="contact.html">Contact Us</a>
-      </div>
-      
-      <div class="footer-column">
+      <div class="footer-section">
         <h3>Contact Info</h3>
         <div class="contact-info">
-          <p><i class="fas fa-map-marker-alt"></i> Rajbiraj-11, Hanumannagar Road, Saptari</p>
-          <p><i class="fas fa-phone"></i> 9842820524, 9801502594</p>
-          <p><i class="fas fa-envelope"></i> amanshreeudhyog@gmail.com</p>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Rajbiraj-11, Hanumannagar Road, Saptari</span>
         </div>
+        <div class="contact-info">
+          <i class="fas fa-phone"></i>
+          <span>9842820524, 9801502594</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-envelope"></i>
+          <span>amanshreeghareluudhyog@gmail.com</span>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Products</a>
+        <a href="about.html">About Us</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
     
-    <div class="copyright">
-      <p>&copy; 2025 Aman Shree Gharelu Udhyog. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+      <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog?_t=ZS-8xDH9uONuVe&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; Aman Shree Gharelu Udhyog. All rights reserved.</p>
     </div>
   </footer>
+
+  <a href="https://wa.me/9842820524" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <button onclick="scrollToTop()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
