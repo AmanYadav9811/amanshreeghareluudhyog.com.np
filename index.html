@@ -57,7 +57,7 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 101;
+      z-index: 1001;
       padding: 10px;
     }
 
@@ -568,13 +568,19 @@
         width: 100%;
         height: 100vh;
         background: rgba(51, 51, 51, 0.98);
-        z-index: 100;
+        z-index: 1000;
         padding-top: 80px;
         justify-content: flex-start;
+        margin: 0;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
       }
 
       nav ul.active {
         display: flex;
+        opacity: 1;
+        transform: translateY(0);
       }
 
       nav ul li {
@@ -584,7 +590,8 @@
 
       nav ul li a {
         font-size: 1.2em;
-        padding: 10px 0;
+        padding: 15px 0;
+        display: block;
       }
 
       /* Hero section */
@@ -734,7 +741,7 @@
   <header>
     <h1>Aman Shree Gharelu Udhyog</h1>
     <p>Paver Block Manufacturer SINCE 2081</p>
-    <button class="nav-toggle" aria-label="Menu">
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mainMenu">
       <i class="fas fa-bars"></i>
     </button>
   </header>
@@ -925,36 +932,47 @@
       const navMenu = document.getElementById('mainMenu');
       const body = document.body;
 
+      // Initialize menu state
+      let isMenuOpen = false;
+
       navToggle.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent event from bubbling up
-        navMenu.classList.toggle('active');
-        navToggle.innerHTML = navMenu.classList.contains('active') ? 
-          '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        e.stopPropagation();
+        isMenuOpen = !isMenuOpen;
         
-        // Prevent scrolling when menu is open
-        if (navMenu.classList.contains('active')) {
+        // Toggle menu visibility
+        if (isMenuOpen) {
+          navMenu.classList.add('active');
+          navToggle.innerHTML = '<i class="fas fa-times"></i>';
+          navToggle.setAttribute('aria-expanded', 'true');
           body.style.overflow = 'hidden';
         } else {
-          body.style.overflow = '';
-        }
-      });
-
-      // Close menu when clicking outside or on a link
-      document.addEventListener('click', function(e) {
-        if (!navMenu.contains(e.target) && !navToggle.contains(e.target) {
           navMenu.classList.remove('active');
           navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          navToggle.setAttribute('aria-expanded', 'false');
           body.style.overflow = '';
         }
       });
 
-      // Close menu when clicking a link
+      // Close menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (isMenuOpen && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+          navMenu.classList.remove('active');
+          navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          navToggle.setAttribute('aria-expanded', 'false');
+          body.style.overflow = '';
+          isMenuOpen = false;
+        }
+      });
+
+      // Close menu when clicking a link (for mobile)
       document.querySelectorAll('nav ul li a').forEach(link => {
         link.addEventListener('click', () => {
           if (window.innerWidth <= 992) {
             navMenu.classList.remove('active');
             navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            navToggle.setAttribute('aria-expanded', 'false');
             body.style.overflow = '';
+            isMenuOpen = false;
           }
         });
       });
