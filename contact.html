@@ -293,15 +293,7 @@
       border: none;
     }
 
-    /* Google Form Container */
-    .google-form-container {
-      margin-top: 40px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    /* Updated Footer to match index.html */
+    /* Footer - Exactly matches index page */
     footer {
       background-color: #3f2a1d;
       color: #fbe9e7;
@@ -354,13 +346,13 @@
       color: #f1c40f;
     }
 
-    .contact-info {
+    .footer-contact-info {
       display: flex;
       align-items: center;
       margin-bottom: 10px;
     }
 
-    .contact-info i {
+    .footer-contact-info i {
       margin-right: 10px;
       color: #f1c40f;
       width: 20px;
@@ -750,12 +742,6 @@
           
           <button type="submit">Send Message</button>
         </form>
-        
-        <!-- Google Form (Alternative) -->
-        <!-- <div class="google-form-container">
-          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
-                  frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-        </div> -->
       </div>
     </div>
     
@@ -772,6 +758,7 @@
     </div>
   </main>
 
+  <!-- Footer - Exactly matches index page -->
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -781,15 +768,15 @@
       
       <div class="footer-section">
         <h3>Contact Info</h3>
-        <div class="contact-info">
+        <div class="footer-contact-info">
           <i class="fas fa-map-marker-alt"></i>
           <span>Rajbiraj-11, Hanumannagar Road, Saptari</span>
         </div>
-        <div class="contact-info">
+        <div class="footer-contact-info">
           <i class="fas fa-phone"></i>
           <span>9842820524, 9801502594</span>
         </div>
-        <div class="contact-info">
+        <div class="footer-contact-info">
           <i class="fas fa-envelope"></i>
           <span>amanshreeghareluudhyog@gmail.com</span>
         </div>
@@ -922,14 +909,6 @@
         });
       });
     }
-
-    /* To use Google Form instead:
-    1. Create your form at forms.google.com
-    2. Click "Send" and choose the embed option
-    3. Copy the iframe code and replace the commented section in the HTML
-    4. Remove or comment out the existing form and success message
-    5. Uncomment the google-form-container div
-    */
   </script>
 
 </body>
