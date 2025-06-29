@@ -391,6 +391,30 @@
       animation: fadeIn 0.5s;
     }
 
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.1);
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -404,6 +428,10 @@
       nav ul li a {
         padding: 12px 15px;
         font-size: 0.8rem;
+      }
+      
+      .banner-image {
+        height: 250px;
       }
       
       .banner-image h2 {
@@ -435,6 +463,14 @@
       .social-links {
         justify-content: center;
       }
+      
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        bottom: 20px;
+        left: 20px;
+      }
     }
   </style>
 </head>
@@ -450,6 +486,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="catalogue.html">Catalogue</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -496,7 +533,7 @@
               </div>
               <div class="contact-text">
                 <h4>Email</h4>
-                <p><a href="mailto:amanshreeghareluudhayog@gmail.com">amanshreeudhyog@gmail.com</a></p>
+                <p><a href="mailto:amanshreeghareluudhayog@gmail.com">amanshreeghareluudhayog@gmail.com</a></p>
               </div>
             </div>
             
@@ -567,13 +604,11 @@
         <h3>About Us</h3>
         <p>Amanshree Gharelu Udhayog has been manufacturing high-quality paver blocks since 2081, serving both residential and commercial clients across the region.</p>
         <div class="social-links">
-          <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
           <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location">
-            <i class="fas fa-map-marker-alt"></i>
-             <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog?_t=ZS-8xDH9uONuVe&_r=1"" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-          </a>
+          <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+          <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog?_t=ZS-8xDH9uONuVe&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
       
@@ -582,6 +617,7 @@
         <a href="index.html">Home</a>
         <a href="catalogue.html">Products Catalogue</a>
         <a href="about.html">About Company</a>
+        <a href="blog.html">Blog</a>
         <a href="contact.html">Contact Us</a>
       </div>
       
@@ -599,6 +635,10 @@
       <p>&copy; 2025 Aman Shree Gharelu Udhyog. All rights reserved.</p>
     </div>
   </footer>
+
+  <a href="https://wa.me/9842820524" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <button onclick="scrollToTop()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
