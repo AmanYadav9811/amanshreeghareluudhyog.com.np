@@ -744,7 +744,7 @@
       <li><a href="index.html">HOME</a></li>
       <li><a href="catalogue.html">CATALOGUE</a></li>
       <li><a href="about.html">ABOUT</a></li>
-      <li><a href="blog.html">BLOG</a></li> <!-- New Blog Link Added -->
+      <li><a href="blog.html">BLOG</a></li>
       <li><a href="contact.html">CONTACT</a></li>
     </ul>
   </nav>
@@ -891,7 +891,7 @@
         <a href="index.html">Home</a>
         <a href="catalogue.html">Products</a>
         <a href="about.html">About Us</a>
-        <a href="blog.html">Blog</a> <!-- New Blog Link Added -->
+        <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
@@ -919,176 +919,178 @@
   <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Improved Mobile Menu Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.getElementById('mainMenu');
-    const body = document.body;
+    // Mobile Menu Toggle - Fixed Version
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.getElementById('mainMenu');
+      const body = document.body;
 
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      navToggle.innerHTML = navMenu.classList.contains('active') ? 
-        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-      
-      // Prevent scrolling when menu is open
-      if (navMenu.classList.contains('active')) {
-        body.style.overflow = 'hidden';
-      } else {
-        body.style.overflow = '';
-      }
-    });
+      navToggle.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event from bubbling up
+        navMenu.classList.toggle('active');
+        navToggle.innerHTML = navMenu.classList.contains('active') ? 
+          '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        
+        // Prevent scrolling when menu is open
+        if (navMenu.classList.contains('active')) {
+          body.style.overflow = 'hidden';
+        } else {
+          body.style.overflow = '';
+        }
+      });
 
-    // Close menu when clicking outside or on a link
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('nav') && !e.target.closest('.nav-toggle') && 
-          navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        body.style.overflow = '';
-      }
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll('nav ul li a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 992) {
+      // Close menu when clicking outside or on a link
+      document.addEventListener('click', function(e) {
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target) {
           navMenu.classList.remove('active');
           navToggle.innerHTML = '<i class="fas fa-bars"></i>';
           body.style.overflow = '';
         }
       });
-    });
 
-    // Back to top button
-    window.onscroll = function() {
-      document.getElementById("topBtn").style.display =
-        document.body.scrollTop > 100 || document.documentElement.scrollTop > 100
-        ? "block" : "none";
-    };
+      // Close menu when clicking a link
+      document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 992) {
+            navMenu.classList.remove('active');
+            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            body.style.overflow = '';
+          }
+        });
+      });
 
-    function topFunction() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Animated counters
-    const counters = document.querySelectorAll('.stat-number[data-target]');
-    const speed = 200;
-
-    const animateCounters = (counter) => {
-      const target = +counter.getAttribute('data-target');
-      const increment = target / speed;
-
-      const updateCount = () => {
-        const count = +counter.innerText;
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(updateCount, 20);
-        } else {
-          counter.innerText = target + '+';
-        }
+      // Back to top button
+      window.onscroll = function() {
+        document.getElementById("topBtn").style.display =
+          document.body.scrollTop > 100 || document.documentElement.scrollTop > 100
+          ? "block" : "none";
       };
 
-      updateCount();
-    };
+      function topFunction() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
 
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters(entry.target);
-          observer.unobserve(entry.target);
+      // Animated counters
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      const speed = 200;
+
+      const animateCounters = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const increment = target / speed;
+
+        const updateCount = () => {
+          const count = +counter.innerText;
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target + '+';
+          }
+        };
+
+        updateCount();
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(counter => observer.observe(counter));
+
+      // Testimonials rotation
+      const testimonials = document.querySelectorAll('.testimonial');
+      let currentTestimonial = 0;
+
+      function showNextTestimonial() {
+        testimonials[currentTestimonial].classList.remove('active');
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        testimonials[currentTestimonial].classList.add('active');
+      }
+
+      setInterval(showNextTestimonial, 5000);
+
+      // Product carousel
+      const carousel = document.getElementById('catalogueCarousel');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      let scrollAmount = 0;
+      let isScrolling = false;
+
+      function scrollCarousel(direction) {
+        if (isScrolling) return;
+        
+        const itemWidth = carousel.querySelector('.catalogue-item').offsetWidth + 20;
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        
+        if (direction === 'prev') {
+          scrollAmount = Math.max(0, scrollAmount - itemWidth);
+        } else {
+          scrollAmount = Math.min(maxScroll, scrollAmount + itemWidth);
         }
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => observer.observe(counter));
-
-    // Testimonials rotation
-    const testimonials = document.querySelectorAll('.testimonial');
-    let currentTestimonial = 0;
-
-    function showNextTestimonial() {
-      testimonials[currentTestimonial].classList.remove('active');
-      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-      testimonials[currentTestimonial].classList.add('active');
-    }
-
-    setInterval(showNextTestimonial, 5000);
-
-    // Product carousel
-    const carousel = document.getElementById('catalogueCarousel');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
-    let scrollAmount = 0;
-    let isScrolling = false;
-
-    function scrollCarousel(direction) {
-      if (isScrolling) return;
-      
-      const itemWidth = carousel.querySelector('.catalogue-item').offsetWidth + 20;
-      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-      
-      if (direction === 'prev') {
-        scrollAmount = Math.max(0, scrollAmount - itemWidth);
-      } else {
-        scrollAmount = Math.min(maxScroll, scrollAmount + itemWidth);
+        
+        isScrolling = true;
+        carousel.scrollTo({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+        
+        setTimeout(() => isScrolling = false, 1000);
       }
-      
-      isScrolling = true;
-      carousel.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth'
+
+      prevBtn.addEventListener('click', () => scrollCarousel('prev'));
+      nextBtn.addEventListener('click', () => scrollCarousel('next'));
+
+      // Auto-scroll every 5 seconds
+      let autoScrollInterval = setInterval(() => scrollCarousel('next'), 5000);
+
+      // Pause auto-scroll on hover
+      carousel.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+      carousel.addEventListener('mouseleave', () => {
+        autoScrollInterval = setInterval(() => scrollCarousel('next'), 5000);
       });
-      
-      setTimeout(() => isScrolling = false, 1000);
-    }
 
-    prevBtn.addEventListener('click', () => scrollCarousel('prev'));
-    nextBtn.addEventListener('click', () => scrollCarousel('next'));
+      // Touch support for carousel
+      let touchStartX = 0;
+      let touchEndX = 0;
 
-    // Auto-scroll every 5 seconds
-    let autoScrollInterval = setInterval(() => scrollCarousel('next'), 5000);
+      carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        clearInterval(autoScrollInterval);
+      }, {passive: true});
 
-    // Pause auto-scroll on hover
-    carousel.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
-    carousel.addEventListener('mouseleave', () => {
-      autoScrollInterval = setInterval(() => scrollCarousel('next'), 5000);
-    });
+      carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        autoScrollInterval = setInterval(() => scrollCarousel('next'), 5000);
+      }, {passive: true});
 
-    // Touch support for carousel
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    carousel.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      clearInterval(autoScrollInterval);
-    }, {passive: true});
-
-    carousel.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-      autoScrollInterval = setInterval(() => scrollCarousel('next'), 5000);
-    }, {passive: true});
-
-    function handleSwipe() {
-      if (touchEndX < touchStartX - 50) {
-        scrollCarousel('next');
-      } else if (touchEndX > touchStartX + 50) {
-        scrollCarousel('prev');
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          scrollCarousel('next');
+        } else if (touchEndX > touchStartX + 50) {
+          scrollCarousel('prev');
+        }
       }
-    }
 
-    // Prevent zooming on double-tap (mobile)
-    document.addEventListener('dblclick', function(e) {
-      e.preventDefault();
-    }, { passive: false });
+      // Prevent zooming on double-tap (mobile)
+      document.addEventListener('dblclick', function(e) {
+        e.preventDefault();
+      }, { passive: false });
 
-    // Improved touch feedback for buttons
-    document.querySelectorAll('button, a').forEach(button => {
-      button.addEventListener('touchstart', function() {
-        this.style.transform = 'scale(0.95)';
-      });
-      
-      button.addEventListener('touchend', function() {
-        this.style.transform = '';
+      // Improved touch feedback for buttons
+      document.querySelectorAll('button, a').forEach(button => {
+        button.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.95)';
+        });
+        
+        button.addEventListener('touchend', function() {
+          this.style.transform = '';
+        });
       });
     });
   </script>
