@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us | Amanshree Gharelu Udyog</title>
+  <title>Contact Us | Aman Shree Gharelu Udyog</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -20,64 +20,93 @@
       line-height: 1.6;
     }
 
-    header, footer {
-      background-color: #4E342E;
-      color: white;
+    header {
+      background-color: #5D4037;
+      color: #fbe9e7;
+      padding: 25px 10px;
       text-align: center;
-      padding: 25px 15px;
+      position: relative;
     }
 
     header h1 {
-      font-size: 2rem;
+      font-size: 2.5em;
       margin-bottom: 5px;
-      font-weight: 700;
     }
 
     header p {
-      font-size: 1rem;
       font-style: italic;
-      opacity: 0.9;
+      font-size: 1.1em;
+    }
+
+    /* Improved Mobile Menu */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8em;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 101;
+      padding: 10px;
+    }
+
+    nav {
+      position: relative;
     }
 
     nav ul {
-      list-style: none;
-      background: #6D4C41;
       display: flex;
       justify-content: center;
+      background-color: #333;
+      list-style: none;
+      padding: 12px 0;
       flex-wrap: wrap;
-      padding: 0;
+      transition: all 0.3s ease;
     }
 
     nav ul li {
-      margin: 0 15px;
+      margin: 0 20px;
     }
 
     nav ul li a {
-      display: block;
-      padding: 15px 20px;
-      color: #fff;
+      color: white;
       text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
+      font-weight: bold;
+      font-size: 1em;
+      transition: color 0.3s ease;
+      padding: 5px 0;
+      position: relative;
+      display: inline-block;
+    }
+
+    nav ul li a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #f1c40f;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover:after {
+      width: 100%;
     }
 
     nav ul li a:hover {
-      background: #5D4037;
-      border-radius: 6px;
-      transform: translateY(-2px);
+      color: #f1c40f;
     }
 
     .banner-image {
       position: relative;
       height: 320px;
       overflow: hidden;
-      background: linear-gradient(rgba(78, 52, 46, 0.7), rgba(78, 52, 46, 0.7)), 
-                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(rgba(93, 64, 55, 0.8), rgba(93, 64, 55, 0.8)), 
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -86,11 +115,14 @@
     }
 
     .banner-image h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-      margin-bottom: 15px;
-      color: white;
+      font-size: 2.8em;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .banner-image p {
+      font-size: 1.3em;
+      margin-bottom: 30px;
     }
 
     main {
@@ -101,22 +133,10 @@
 
     h2 {
       text-align: center;
-      color: #4E342E;
-      font-size: 2.2rem;
-      margin-bottom: 40px;
-      position: relative;
-      padding-bottom: 15px;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background-color: #8D6E63;
+      color: #5D4037;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-weight: 600;
     }
 
     .contact-section {
@@ -143,13 +163,13 @@
 
     .contact-info h3 {
       font-size: 1.5rem;
-      color: #4E342E;
+      color: #5D4037;
       margin-bottom: 20px;
       position: relative;
       padding-bottom: 10px;
     }
 
-    .contact-info h3::after {
+    .contact-info h3:after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -208,7 +228,7 @@
       display: block;
       margin-bottom: 8px;
       font-weight: 600;
-      color: #4E342E;
+      color: #5D4037;
     }
 
     input[type="text"],
@@ -241,7 +261,7 @@
     }
 
     button[type="submit"] {
-      background-color: #6D4C41;
+      background-color: #8D6E63;
       color: white;
       border: none;
       padding: 14px 28px;
@@ -256,7 +276,7 @@
     }
 
     button[type="submit"]:hover {
-      background-color: #5D4037;
+      background-color: #6D4C41;
       transform: translateY(-2px);
     }
 
@@ -273,111 +293,192 @@
       border: none;
     }
 
+    /* Google Form Container */
+    .google-form-container {
+      margin-top: 40px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Updated Footer to match index.html */
     footer {
+      background-color: #3f2a1d;
+      color: #fbe9e7;
       padding: 40px 20px;
-      background: linear-gradient(to right, #4E342E, #5D4037);
+      text-align: center;
     }
 
     .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
       text-align: left;
     }
 
-    .footer-column h3 {
-      font-size: 1.3rem;
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin: 15px;
+    }
+
+    .footer-section h3 {
+      color: #f1c40f;
       margin-bottom: 20px;
+      font-size: 1.3em;
       position: relative;
       padding-bottom: 10px;
     }
 
-    .footer-column h3::after {
+    .footer-section h3:after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
       width: 50px;
       height: 2px;
-      background-color: #D7CCC8;
+      bottom: 0;
+      left: 0;
+      background-color: #f1c40f;
     }
 
-    .footer-column p, .footer-column a {
-      margin-bottom: 12px;
+    .footer-section p, .footer-section a {
+      margin-bottom: 10px;
       display: block;
-      color: #f5f5f5;
+      color: #fbe9e7;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-column a:hover {
-      color: #D7CCC8;
-      text-decoration: underline;
+    .footer-section a:hover {
+      color: #f1c40f;
     }
 
-    .contact-info-footer {
-      margin-top: 15px;
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
     }
 
-    .contact-info-footer i {
+    .contact-info i {
       margin-right: 10px;
+      color: #f1c40f;
       width: 20px;
       text-align: center;
     }
 
-    .social-links {
+    .footer-social {
       display: flex;
-      gap: 15px;
       margin-top: 20px;
+      justify-content: center;
     }
 
-    .social-links a {
+    .footer-social a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255,255,255,0.1);
+      margin: 0 10px;
+      color: #fbe9e7;
+      font-size: 1.4em;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
-      transition: all 0.3s;
+      background-color: rgba(241, 196, 15, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .social-links a:hover {
-      background-color: rgba(255,255,255,0.2);
-      transform: translateY(-3px);
+    .footer-social a:hover {
+      color: #f1c40f;
+      transform: translateY(-5px);
+      background-color: rgba(241, 196, 15, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .copyright {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.9rem;
-      opacity: 0.8;
+    .footer-social a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .footer-social a:hover::before {
+      left: 100%;
+    }
+
+    .footer-bottom {
+      background-color: #2c1a0f;
+      padding: 15px 0;
+      margin-top: 30px;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 0.9em;
     }
 
     #topBtn {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background-color: #6D4C41;
-      color: white;
-      border: none;
-      padding: 14px 18px;
-      border-radius: 50%;
       font-size: 20px;
+      background-color: #5D4037;
+      color: #fff;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       display: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
       z-index: 99;
-      transition: all 0.3s;
     }
 
     #topBtn:hover {
-      background-color: #8D6E63;
-      transform: translateY(-3px);
+      background-color: #4e342e;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 99;
+      transition: all 0.3s;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
 
     .success-message {
@@ -391,53 +492,77 @@
       animation: fadeIn 0.5s;
     }
 
-    .whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      left: 25px;
-      background-color: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-    }
-
-    .whatsapp-float:hover {
-      background-color: #128C7E;
-      transform: scale(1.1);
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    @media (max-width: 768px) {
+    /* ========== MOBILE STYLES ========== */
+    @media (max-width: 992px) {
+      /* General adjustments */
+      body {
+        font-size: 15px;
+      }
+      
+      /* Header adjustments */
+      header h1 {
+        font-size: 2em;
+        padding-right: 50px; /* Space for hamburger */
+      }
+
+      header p {
+        font-size: 1em;
+      }
+
+      /* Improved mobile menu */
+      .nav-toggle {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(51, 51, 51, 0.98);
+        z-index: 100;
+        padding-top: 80px;
+        justify-content: flex-start;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
       nav ul li {
-        margin: 0 8px;
+        margin: 15px 0;
+        text-align: center;
       }
-      
+
       nav ul li a {
-        padding: 12px 15px;
-        font-size: 0.8rem;
+        font-size: 1.2em;
+        padding: 10px 0;
       }
-      
+
+      /* Banner section */
       .banner-image {
         height: 250px;
       }
-      
+
       .banner-image h2 {
-        font-size: 2rem;
+        font-size: 2em;
+        margin-bottom: 15px;
       }
-      
+
+      .banner-image p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+      }
+
+      /* Contact section */
       .contact-section, .contact-info, form {
         padding: 25px 20px;
       }
@@ -445,31 +570,70 @@
       .contact-container {
         grid-template-columns: 1fr;
       }
-      
+
+      /* Footer */
       .footer-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .footer-column {
+        flex-direction: column;
+        align-items: center;
         text-align: center;
       }
-      
-      .footer-column h3::after {
+
+      .footer-section {
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3:after {
         left: 50%;
         transform: translateX(-50%);
       }
-      
-      .social-links {
+
+      .footer-social {
         justify-content: center;
       }
-      
+
+      /* Floating buttons */
       .whatsapp-float {
         width: 50px;
         height: 50px;
-        font-size: 25px;
+        font-size: 1.5em;
+        bottom: 80px;
+      }
+
+      #topBtn {
+        padding: 10px 13px;
+        font-size: 18px;
         bottom: 20px;
-        left: 20px;
+        right: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      /* Extra small devices */
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .banner-image {
+        height: 200px;
+      }
+
+      .banner-image h2 {
+        font-size: 1.6em;
+      }
+
+      .banner-image p {
+        font-size: 1em;
+      }
+    }
+
+    /* Landscape orientation adjustments */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .banner-image {
+        height: 100vh;
+      }
+      
+      nav ul {
+        padding-top: 60px;
       }
     }
   </style>
@@ -479,15 +643,18 @@
   <header>
     <h1>Aman Shree Gharelu Udhyog</h1>
     <p>Paver Block Manufacturer SINCE 2081</p>
+    <button class="nav-toggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
   <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="catalogue.html">Catalogue</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
+    <ul id="mainMenu">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="catalogue.html">CATALOGUE</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="blog.html">BLOG</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
     </ul>
   </nav>
 
@@ -550,6 +717,7 @@
           </div>
         </div>
         
+        <!-- Contact Form -->
         <form id="contactForm" action="https://formspree.io/f/myyqgvqj" method="POST">
           <div id="successMessage" class="success-message">
             Thank you for your message! We will contact you soon.
@@ -582,6 +750,12 @@
           
           <button type="submit">Send Message</button>
         </form>
+        
+        <!-- Google Form (Alternative) -->
+        <!-- <div class="google-form-container">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+                  frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        </div> -->
       </div>
     </div>
     
@@ -600,39 +774,47 @@
 
   <footer>
     <div class="footer-content">
-      <div class="footer-column">
+      <div class="footer-section">
         <h3>About Us</h3>
-        <p>Amanshree Gharelu Udhayog has been manufacturing high-quality paver blocks since 2081, serving both residential and commercial clients across the region.</p>
-        <div class="social-links">
-          <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
-          <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog?_t=ZS-8xDH9uONuVe&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <p>Family-owned paver block manufacturer serving Rajbiraj and surrounding areas with quality products since 2081.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Rajbiraj-11, Hanumannagar Road, Saptari</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-phone"></i>
+          <span>9842820524, 9801502594</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-envelope"></i>
+          <span>amanshreeghareluudhyog@gmail.com</span>
         </div>
       </div>
       
-      <div class="footer-column">
+      <div class="footer-section">
         <h3>Quick Links</h3>
         <a href="index.html">Home</a>
-        <a href="catalogue.html">Products Catalogue</a>
-        <a href="about.html">About Company</a>
+        <a href="catalogue.html">Products</a>
+        <a href="about.html">About Us</a>
         <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Contact Info</h3>
-        <div class="contact-info-footer">
-          <p><i class="fas fa-map-marker-alt"></i> Rajbiraj-11, Hanumannagar Road, Saptari</p>
-          <p><i class="fas fa-phone"></i> 9842820524, 9801502594</p>
-          <p><i class="fas fa-envelope"></i> amanshreeghareluudhayog@gmail.com</p>
-        </div>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
     
-    <div class="copyright">
-      <p>&copy; 2025 Aman Shree Gharelu Udhyog. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+      <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog?_t=ZS-8xDH9uONuVe&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; Aman Shree Gharelu Udhyog. All rights reserved.</p>
     </div>
   </footer>
 
@@ -640,17 +822,56 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <button onclick="scrollToTop()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+  <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Scroll to top button
+    // Improved Mobile Menu Toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.getElementById('mainMenu');
+    const body = document.body;
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      navToggle.innerHTML = navMenu.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      
+      // Prevent scrolling when menu is open
+      if (navMenu.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+      } else {
+        body.style.overflow = '';
+      }
+    });
+
+    // Close menu when clicking outside or on a link
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav') && !e.target.closest('.nav-toggle') && 
+          navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        body.style.overflow = '';
+      }
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 992) {
+          navMenu.classList.remove('active');
+          navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          body.style.overflow = '';
+        }
+      });
+    });
+
+    // Back to top button
     window.onscroll = function() {
       document.getElementById("topBtn").style.display =
         document.body.scrollTop > 100 || document.documentElement.scrollTop > 100
         ? "block" : "none";
     };
 
-    function scrollToTop() {
+    function topFunction() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -701,6 +922,14 @@
         });
       });
     }
+
+    /* To use Google Form instead:
+    1. Create your form at forms.google.com
+    2. Click "Send" and choose the embed option
+    3. Copy the iframe code and replace the commented section in the HTML
+    4. Remove or comment out the existing form and success message
+    5. Uncomment the google-form-container div
+    */
   </script>
 
 </body>
