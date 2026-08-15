@@ -6,9 +6,6 @@
     <title>Contact Us | Aman Shree Gharelu Udhyog - Premium Paver Blocks</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- EmailJS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
     <style>
         /* ===== CSS VARIABLES ===== */
         :root {
@@ -612,12 +609,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             };
 
-            // ===== EMAILJS CONTACT FORM =====
-            // Initialize EmailJS with your Public Key
-            (function() {
-                emailjs.init("Jd1bb8CmkAC5weEys"); // YOUR PUBLIC KEY
-            })();
-
+            // ===== FORMSPREE SUBMISSION =====
             const form = document.getElementById('contactForm');
             const alertDiv = document.getElementById('alertMessage');
             const submitBtn = document.getElementById('submitBtn');
@@ -626,14 +618,11 @@
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
 
-                    // Get form values
                     const name = document.getElementById('name').value.trim();
                     const email = document.getElementById('email').value.trim();
-                    const phone = document.getElementById('phone').value.trim();
                     const subject = document.getElementById('subject').value;
                     const message = document.getElementById('message').value.trim();
 
-                    // Validate
                     if (!name || name.length < 2) {
                         showAlert('Please enter your full name (minimum 2 characters)', 'error');
                         return;
@@ -651,32 +640,30 @@
                         return;
                     }
 
-                    // Disable button
                     submitBtn.disabled = true;
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-                    // Prepare data for EmailJS
-                    const templateParams = {
-                        name: name,
-                        email: email,
-                        phone: phone || 'Not provided',
-                        subject: subject,
-                        message: message
-                    };
+                    const data = new FormData(form);
 
-                    // Send email via EmailJS
-                    emailjs.send('service_hxuno43', 'template_whifygg', templateParams)
-                        .then(function(response) {
+                    fetch('https://formspree.io/f/xnpabply', {
+                        method: 'POST',
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
                             showAlert('✅ Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
                             form.reset();
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                        }, function(error) {
-                            showAlert('❌ Oops! Something went wrong. Please try again later.', 'error');
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                            console.error('EmailJS Error:', error);
-                        });
+                        } else {
+                            showAlert('❌ Oops! Something went wrong. Please try again.', 'error');
+                        }
+                    }).catch(error => {
+                        showAlert('❌ Oops! There was a network problem sending your message.', 'error');
+                    }).finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    });
                 });
             }
 
@@ -690,6 +677,5 @@
 
         });
     </script>
-
 </body>
 </html>
