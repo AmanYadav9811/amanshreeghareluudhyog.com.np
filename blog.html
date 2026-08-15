@@ -1,779 +1,1203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
-  <title>Blog - Amanshree Gharelu Udyog</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(270deg, #f5f1e9, #ffffff, #f5f1e9);
-      background-size: 600% 600%;
-      animation: gradientBG 15s ease infinite;
-      color: #333;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    header {
-      background-color: #5D4037;
-      color: #fbe9e7;
-      padding: 25px 10px;
-      text-align: center;
-      position: relative;
-    }
-
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 5px;
-    }
-
-    header p {
-      font-style: italic;
-      font-size: 1.1em;
-    }
-
-    /* Improved Mobile Menu */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.8em;
-      cursor: pointer;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 101;
-      padding: 10px;
-    }
-
-    nav {
-      position: relative;
-    }
-
-    nav ul {
-      display: flex;
-      justify-content: center;
-      background-color: #333;
-      list-style: none;
-      padding: 12px 0;
-      flex-wrap: wrap;
-      transition: all 0.3s ease;
-    }
-
-    nav ul li {
-      margin: 0 20px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1em;
-      transition: color 0.3s ease;
-      padding: 5px 0;
-      position: relative;
-      display: inline-block;
-    }
-
-    nav ul li a:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #f1c40f;
-      transition: width 0.3s ease;
-    }
-
-    nav ul li a:hover:after {
-      width: 100%;
-    }
-
-    nav ul li a:hover {
-      color: #f1c40f;
-    }
-
-    /* Blog Content */
-    .blog-container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .blog-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .blog-header h2 {
-      color: #5D4037;
-      font-size: 2.5em;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 15px;
-    }
-
-    .blog-header h2:after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 3px;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #f1c40f;
-    }
-
-    .blog-posts {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .blog-post {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
-
-    .blog-post:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .post-media {
-      height: 200px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .post-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-
-    .post-media iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .blog-post:hover .post-media img {
-      transform: scale(1.05);
-    }
-
-    .post-content {
-      padding: 25px;
-    }
-
-    .post-date {
-      color: #f1c40f;
-      font-size: 0.9em;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .post-title {
-      color: #5D4037;
-      font-size: 1.4em;
-      margin-bottom: 15px;
-      line-height: 1.3;
-    }
-
-    .post-excerpt {
-      color: #666;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .read-more {
-      display: inline-block;
-      color: #5D4037;
-      font-weight: bold;
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 3px;
-    }
-
-    .read-more:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #f1c40f;
-      transition: width 0.3s;
-    }
-
-    .read-more:hover:after {
-      width: 100%;
-    }
-
-    .video-label {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: rgba(241, 196, 15, 0.9);
-      color: #5D4037;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-size: 0.8em;
-      font-weight: bold;
-      z-index: 2;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #3f2a1d;
-      color: #fbe9e7;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .footer-section {
-      flex: 1;
-      min-width: 250px;
-      margin: 15px;
-    }
-
-    .footer-section h3 {
-      color: #f1c40f;
-      margin-bottom: 20px;
-      font-size: 1.3em;
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    .footer-section h3:after {
-      content: '';
-      position: absolute;
-      width: 50px;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #f1c40f;
-    }
-
-    .footer-section p, .footer-section a {
-      margin-bottom: 10px;
-      display: block;
-      color: #fbe9e7;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer-section a:hover {
-      color: #f1c40f;
-    }
-
-    .contact-info {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .contact-info i {
-      margin-right: 10px;
-      color: #f1c40f;
-      width: 20px;
-      text-align: center;
-    }
-
-    .footer-social {
-      display: flex;
-      margin-top: 20px;
-      justify-content: center;
-    }
-
-    .footer-social a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 10px;
-      color: #fbe9e7;
-      font-size: 1.4em;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background-color: rgba(241, 196, 15, 0.1);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .footer-social a:hover {
-      color: #f1c40f;
-      transform: translateY(-5px);
-      background-color: rgba(241, 196, 15, 0.2);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .footer-social a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-    }
-
-    .footer-social a:hover::before {
-      left: 100%;
-    }
-
-    .footer-bottom {
-      background-color: #2c1a0f;
-      padding: 15px 0;
-      margin-top: 30px;
-    }
-
-    .footer-bottom p {
-      margin: 0;
-      font-size: 0.9em;
-    }
-
-    /* Floating Buttons */
-    #topBtn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      font-size: 20px;
-      background-color: #5D4037;
-      color: #fff;
-      border: none;
-      padding: 12px 15px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s;
-      z-index: 99;
-    }
-
-    #topBtn:hover {
-      background-color: #4e342e;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 90px;
-      right: 25px;
-      background: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8em;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 99;
-      transition: all 0.3s;
-      text-decoration: none;
-      animation: pulse 2s infinite;
-    }
-    
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      animation: none;
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ========== MOBILE STYLES ========== */
-    @media (max-width: 992px) {
-      /* General adjustments */
-      body {
-        font-size: 15px;
-      }
-      
-      /* Header adjustments */
-      header h1 {
-        font-size: 2em;
-        padding-right: 50px; /* Space for hamburger */
-      }
-
-      header p {
-        font-size: 1em;
-      }
-
-      /* Improved mobile menu */
-      .nav-toggle {
-        display: block;
-      }
-
-      nav ul {
-        flex-direction: column;
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: rgba(51, 51, 51, 0.98);
-        z-index: 100;
-        padding-top: 80px;
-        justify-content: flex-start;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      nav ul li {
-        margin: 15px 0;
-        text-align: center;
-      }
-
-      nav ul li a {
-        font-size: 1.2em;
-        padding: 10px 0;
-      }
-
-      /* Blog section */
-      .blog-posts {
-        grid-template-columns: 1fr;
-      }
-
-      /* Footer */
-      .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .footer-section {
-        margin-bottom: 30px;
-      }
-
-      .footer-section h3:after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .footer-social {
-        justify-content: center;
-      }
-
-      /* Floating buttons */
-      .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5em;
-        bottom: 80px;
-      }
-
-      #topBtn {
-        padding: 10px 13px;
-        font-size: 18px;
-        bottom: 20px;
-        right: 20px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      /* Extra small devices */
-      header h1 {
-        font-size: 1.8em;
-      }
-
-      .footer-social a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2em;
-        margin: 0 8px;
-      }
-    }
-
-    /* Landscape orientation adjustments */
-    @media (max-height: 500px) and (orientation: landscape) {
-      nav ul {
-        padding-top: 60px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+    <title>Blog | Aman Shree Gharelu Udhyog - Premium Paver Blocks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           PREMIUM DESIGN - AMAN SHREE GHARELU UDHYOG
+           ======================================== */
+
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #5D4037;
+            --primary-dark: #3f2a1d;
+            --primary-light: #8D6E63;
+            --gold: #f1c40f;
+            --gold-dark: #d4a800;
+            --gold-light: #f7dc6f;
+            --bg-light: #f8f5f2;
+            --bg-white: #ffffff;
+            --text-dark: #2d2d2d;
+            --text-light: #6b6b6b;
+            --text-white: #ffffff;
+            --shadow: 0 10px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 15px 50px rgba(0,0,0,0.15);
+            --shadow-gold: 0 10px 30px rgba(241, 196, 15, 0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 16px;
+        }
+
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========================================
+           TOP BAR
+           ======================================== */
+
+        .top-bar {
+            background: var(--primary-dark);
+            color: var(--text-white);
+            padding: 10px 20px;
+            font-size: 13px;
+            border-bottom: 3px solid var(--gold);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-info {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .top-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d7ccc8;
+            transition: var(--transition);
+            font-size: 13px;
+        }
+
+        .top-info span:hover {
+            color: var(--gold);
+        }
+
+        .top-info i {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        .top-socials {
+            display: flex;
+            gap: 10px;
+        }
+
+        .top-socials a {
+            color: #d7ccc8;
+            font-size: 14px;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .top-socials a:hover {
+            color: var(--gold);
+            background: rgba(241, 196, 15, 0.15);
+            transform: translateY(-3px);
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .main-header {
+            background: var(--primary);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--text-white);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 26px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle:hover {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 60%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--primary-dark) !important;
+            padding: 8px 24px !important;
+            border-radius: 30px !important;
+            font-weight: 700 !important;
+            transition: var(--transition);
+        }
+
+        .btn-gold::after {
+            display: none !important;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+            color: var(--primary-dark) !important;
+        }
+
+        /* ========================================
+           BANNER
+           ======================================== */
+
+        .banner {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-white);
+        }
+
+        .banner .overlay {
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .banner .overlay h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+
+        .banner .overlay h1 span {
+            color: var(--gold);
+        }
+
+        .banner .overlay p {
+            font-size: 1.2rem;
+            color: #d7ccc8;
+            margin-top: 10px;
+        }
+
+        /* ========================================
+           BLOG SECTION
+           ======================================== */
+
+        .blog-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header .badge {
+            display: inline-block;
+            background: rgba(241, 196, 15, 0.15);
+            color: var(--gold-dark);
+            padding: 5px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .section-header h2 span {
+            color: var(--gold-dark);
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .blog-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-image .placeholder-icon {
+            font-size: 4rem;
+            color: rgba(255,255,255,0.2);
+        }
+
+        .blog-image .video-label {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--gold);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .blog-image .platform-icon {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .blog-image .platform-icon i {
+            font-size: 14px;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .blog-meta i {
+            color: var(--gold-dark);
+            margin-right: 4px;
+        }
+
+        .blog-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .blog-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--gold-dark);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .read-more i {
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--primary);
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ========================================
+           STATS
+           ======================================== */
+
+        .stats-section {
+            padding: 60px 0;
+            background: var(--bg-white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+            background: linear-gradient(135deg, var(--primary), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* ========================================
+           CTA SECTION
+           ======================================== */
+
+        .cta-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            text-align: center;
+            color: var(--text-white);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .cta-section h2 span {
+            color: var(--gold);
+        }
+
+        .cta-section p {
+            color: #d7ccc8;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+
+        footer {
+            background: var(--primary-dark);
+            color: #d7ccc8;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            margin-bottom: 12px;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #d7ccc8;
+            margin-bottom: 10px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+            padding-left: 8px;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-contact i {
+            color: var(--gold);
+            width: 20px;
+            font-size: 16px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            color: #d7ccc8;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .footer-socials a:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: translateY(-4px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            font-size: 14px;
+            color: #8d7a6e;
+        }
+
+        /* ========================================
+           FLOATING BUTTONS
+           ======================================== */
+
+        #topBtn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--gold);
+            color: var(--primary-dark);
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: none;
+            box-shadow: var(--shadow-gold);
+            transition: var(--transition);
+            z-index: 999;
+            animation: bounceUp 2s infinite;
+        }
+
+        #topBtn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        @keyframes bounceUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 992px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .banner .overlay h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .top-info {
+                font-size: 12px;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
+                gap: 8px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+            }
+            .nav-links a::after {
+                display: none;
+            }
+            .banner {
+                height: 250px;
+            }
+            .banner .overlay h1 {
+                font-size: 1.8rem;
+            }
+            .banner .overlay p {
+                font-size: 1rem;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-contact {
+                justify-content: center;
+            }
+            .footer-socials {
+                justify-content: center;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 80px;
+                right: 20px;
+            }
+            #topBtn {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-info {
+                font-size: 11px;
+                gap: 8px;
+                flex-direction: column;
+            }
+            .top-socials a {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+            .logo {
+                font-size: 20px;
+            }
+            .banner {
+                height: 200px;
+            }
+            .banner .overlay h1 {
+                font-size: 1.4rem;
+            }
+            .banner .overlay p {
+                font-size: 0.9rem;
+            }
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .stat-label {
+                font-size: 0.8rem;
+            }
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            .blog-content {
+                padding: 18px;
+            }
+            .blog-image {
+                height: 160px;
+            }
+            .footer-socials a {
+                width: 38px;
+                height: 38px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .stat-number {
+                font-size: 1.6rem;
+            }
+            .blog-content h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Aman Shree Gharelu Udhyog</h1>
-    <p>Paver Block Manufacturer SINCE 2081</p>
-    <button class="nav-toggle" aria-label="Menu">
-      <i class="fas fa-bars"></i>
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-info">
+                <span><i class="fas fa-map-marker-alt"></i> Rajbiraj-11, Hanumannagar Road, Saptari</span>
+                <span><i class="fas fa-phone"></i> 9842820524, 9801502594</span>
+                <span><i class="fas fa-envelope"></i> amanshreeghareluudhyog@gmail.com</span>
+            </div>
+            <div class="top-socials">
+                <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="mailto:amanshreeghareluudhyog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="main-header">
+        <a href="index.html" class="logo">Aman Shree<span>Gharelu Udhyog</span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="about.html">About</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="btn-gold">Get Quote</a>
+        </nav>
+    </header>
+
+    <!-- ===== BANNER ===== -->
+    <section class="banner">
+        <div class="overlay">
+            <h1>Our <span>Blog</span></h1>
+            <p>Latest news, tips and insights about paver blocks and construction</p>
+        </div>
+    </section>
+
+    <!-- ===== BLOG ===== -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Latest Articles</span>
+                <h2>Insights &amp; <span>Updates</span></h2>
+                <p>Stay updated with our latest projects, tips, and industry news</p>
+            </div>
+
+            <div class="blog-grid">
+                <!-- Blog 1: TikTok - Paver Installation -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
+                        <div class="placeholder-icon"><i class="fas fa-industry"></i></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 25, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>How to Install Paver Blocks Properly | Saketa Park Project</h3>
+                        <p>Watch our step-by-step guide on proper paver block installation techniques at Rajbiraj-7 Saketa Park. Learn from our experts!</p>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" class="read-more">Watch on TikTok <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog 2: Facebook - Completed Project -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-check-circle"></i> PROJECT</span>
+                        <span class="platform-icon"><i class="fab fa-facebook"></i> Facebook</span>
+                        <div class="placeholder-icon"><i class="fas fa-hard-hat"></i></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 18, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>Premium Paver Installation at Lilja Tole, Rajbiraj</h3>
+                        <p>Check out our latest completed project at Lilja Tole featuring premium interlocking paver blocks with stunning red and yellow patterns.</p>
+                        <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" class="read-more">View on Facebook <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog 3: TikTok - Maintenance Tips -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
+                        <div class="placeholder-icon"><i class="fas fa-tools"></i></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 10, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>How to Maintain Your Paver Blocks | Expert Tips</h3>
+                        <p>Essential video tutorial showing techniques to keep your paver blocks looking new and performing well for years to come.</p>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" class="read-more">Watch on TikTok <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog 4: Facebook - New Design -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-palette"></i> DESIGN</span>
+                        <span class="platform-icon"><i class="fab fa-facebook"></i> Facebook</span>
+                        <div class="placeholder-icon"><i class="fas fa-drafting-compass"></i></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 2, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>Creative Landscaping Ideas Using Paver Blocks</h3>
+                        <p>Discover innovative ways to use paver blocks in your garden and outdoor spaces to create beautiful, functional landscapes.</p>
+                        <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" class="read-more">View on Facebook <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog 5: TikTok - Behind the Scenes -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-video"></i> BTS</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
+                        <div class="placeholder-icon"><i class="fas fa-cogs"></i></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> May 25, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>Behind the Scenes: Paver Block Manufacturing Process</h3>
+                        <p>Take a look at our manufacturing process - from raw materials to finished premium paver blocks ready for delivery.</p>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" class="read-more">Watch on TikTok <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog 6: Facebook - Customer Testimonial -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-star"></i> REVIEW</span>
+                        <span class="platform-icon"><i class="fab fa-facebook"></i> Facebook</span>
+                        <div class="placeholder-icon"><i class="fas fa-user-check"></i></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> May 15, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>Happy Customer Stories: Paver Block Transformations</h3>
+                        <p>Real feedback from our valued customers who transformed their spaces with our premium paver blocks.</p>
+                        <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" class="read-more">View on Facebook <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50">0</span>
+                    <span class="stat-label">Blog Posts</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="1000">0</span>
+                    <span class="stat-label">Social Followers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="100">0</span>
+                    <span class="stat-label">Video Views</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="25">0</span>
+                    <span class="stat-label">Projects Featured</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Follow Us for <span>More Updates</span></h2>
+            <p>Stay connected with us on social media for the latest projects and tips</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" class="btn-gold" style="padding: 14px 30px !important; font-size: 1rem !important;">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" class="btn-gold" style="padding: 14px 30px !important; font-size: 1rem !important;">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Aman Shree Gharelu Udhyog</h3>
+                <p>Family-owned paver block manufacturer serving Rajbiraj and surrounding areas with quality products since 2081.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:amanshreeghareluudhyog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+                    <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="catalogue.html">Catalogue</a>
+                <a href="about.html">About Us</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <div class="footer-contact">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Rajbiraj-11, Hanumannagar Road, Saptari</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-phone"></i>
+                    <span>9842820524, 9801502594</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>amanshreeghareluudhyog@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aman Shree Gharelu Udhyog. All Rights Reserved. | Made with <i class="fas fa-heart" style="color: var(--gold);"></i> in Nepal</p>
+        </div>
+    </footer>
+
+    <!-- ===== FLOATING BUTTONS ===== -->
+    <a href="https://wa.me/9842820524" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button onclick="topFunction()" id="topBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
     </button>
-  </header>
 
-  <nav>
-    <ul id="mainMenu">
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="catalogue.html">CATALOGUE</a></li>
-      <li><a href="about.html">ABOUT</a></li>
-      <li><a href="blog.html">BLOG</a></li>
-      <li><a href="contact.html">CONTACT</a></li>
-    </ul>
-  </nav>
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-  <main class="blog-container">
-    <div class="blog-header">
-      <h2>Our Blog</h2>
-      <p>Latest news, tips and insights about paver blocks and construction</p>
-    </div>
-    
-    <div class="blog-posts">
-      <!-- Blog Post 1 with Video -->
-      <article class="blog-post">
-        <div class="post-media">
-          <div class="video-label">VIDEO</div>
-          <iframe src="https://www.youtube.com/embed/XRCWPbC8GA8" title="Paver Block Installation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="post-content">
-          <span class="post-date">June 25, 2025</span>
-          <h3 class="post-title">How to Install Paver Blocks Properly Our site works on Rajbiraj-7 Saketa Park. High court</h3>
-          <p class="post-excerpt">Watch our step-by-step guide on proper paver block installation techniques to ensure long-lasting results for your projects.</p>
-          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-      
-      <!-- Blog Post 2 with Image -->
-      <article class="blog-post">
-        <div class="post-media">
-          <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Landscaping with Pavers">
-        </div>
-        <div class="post-content">
-          <span class="post-date">May 28, 2025</span>
-          <h3 class="post-title">Creative Landscaping Ideas Using Paver Blocks</h3>
-          <p class="post-excerpt">Discover innovative ways to use paver blocks in your garden and outdoor spaces to create beautiful, functional landscapes.</p>
-          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-      
-      <!-- Blog Post 3 with Video -->
-      <article class="blog-post">
-        <div class="post-media">
-          <div class="video-label">VIDEO</div>
-          <iframe src="https://www.youtube.com/embed/YLBgwqYCFis" title="Paver Maintenance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="post-content">
-          <span class="post-date">April 10, 2025</span>
-          <h3 class="post-title"> Maintaining Your Paver Blocks Site work in Lilja Tole Rajbiraj</h3>
-          <p class="post-excerpt">Essential video tutorial showing techniques to keep your paver blocks looking new and performing well for years to come.</p>
-          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-    </div>
-  </main>
+            // ===== MOBILE MENU =====
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>About Us</h3>
-        <p>Family-owned paver block manufacturer serving Rajbiraj and surrounding areas with quality products since 2081.</p>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Contact Info</h3>
-        <div class="contact-info">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Rajbiraj-11, Hanumannagar Road, Saptari</span>
-        </div>
-        <div class="contact-info">
-          <i class="fas fa-phone"></i>
-          <span>9842820524, 9801502594</span>
-        </div>
-        <div class="contact-info">
-          <i class="fas fa-envelope"></i>
-          <span>amanshreeghareluudhyog@gmail.com</span>
-        </div>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <a href="index.html">Home</a>
-        <a href="catalogue.html">Products</a>
-        <a href="about.html">About Us</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
-    
-    <div class="footer-social">
-      <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="mailto:amanshreeghareluudhayog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
-      <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog?_t=ZS-8xDH9uONuVe&_r=1" target="_blank" aria-label="TikTok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; Aman Shree Gharelu Udhyog. All rights reserved.</p>
-    </div>
-  </footer>
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('open');
+                    navToggle.innerHTML = navLinks.classList.contains('open') ?
+                        '<i class="fas fa-times"></i>' :
+                        '<i class="fas fa-bars"></i>';
+                });
 
-  <a href="https://wa.me/9842820524" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.main-header') && navLinks.classList.contains('open')) {
+                        navLinks.classList.remove('open');
+                        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
 
-  <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-  <script>
-    // Improved Mobile Menu Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.getElementById('mainMenu');
-    const body = document.body;
-
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      navToggle.innerHTML = navMenu.classList.contains('active') ? 
-        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-      
-      // Prevent scrolling when menu is open
-      if (navMenu.classList.contains('active')) {
-        body.style.overflow = 'hidden';
-      } else {
-        body.style.overflow = '';
-      }
-    });
-
-    // Close menu when clicking outside or on a link
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('nav') && !e.target.closest('.nav-toggle') && 
-          navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        body.style.overflow = '';
-      }
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll('nav ul li a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 992) {
-          navMenu.classList.remove('active');
-          navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-          body.style.overflow = '';
-        }
-      });
-    });
-
-    // Back to top button
-    window.onscroll = function() {
-      document.getElementById("topBtn").style.display =
-        document.body.scrollTop > 100 || document.documentElement.scrollTop > 100
-        ? "block" : "none";
-    };
-
-    function topFunction() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Blog post hover effects
-    document.querySelectorAll('.blog-post').forEach(post => {
-      post.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px)';
-        this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
-      });
-      post.addEventListener('mouseleave', function() {
-        this.style.transform = '';
-        this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-      });
-    });
-
-    // Lazy load videos when they come into view
-    const lazyLoadVideos = () => {
-      const videoContainers = document.querySelectorAll('.post-media iframe');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const iframe = entry.target;
-            const src = iframe.getAttribute('data-src');
-            if (src) {
-              iframe.setAttribute('src', src);
-              observer.unobserve(iframe);
+                document.querySelectorAll('.nav-links a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            navLinks.classList.remove('open');
+                            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    });
+                });
             }
-          }
+
+            // ===== BACK TO TOP =====
+            window.onscroll = function() {
+                const topBtn = document.getElementById('topBtn');
+                if (topBtn) {
+                    topBtn.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ?
+                        'block' : 'none';
+                }
+            };
+
+            window.topFunction = function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // ===== ANIMATED COUNTERS =====
+            const counters = document.querySelectorAll('.stat-number[data-target]');
+
+            const animateCounter = function(counter) {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const speed = 200;
+                const increment = target / speed;
+                let current = 0;
+
+                const updateCount = function() {
+                    if (current < target) {
+                        current = Math.ceil(current + increment);
+                        counter.textContent = current;
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.textContent = target + '+';
+                    }
+                };
+
+                updateCount();
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(function(counter) {
+                observer.observe(counter);
+            });
+
         });
-      }, { rootMargin: '100px' });
-      
-      videoContainers.forEach(container => {
-        const dataSrc = container.getAttribute('data-src');
-        if (dataSrc) {
-          observer.observe(container);
-        }
-      });
-    };
-    
-    // Call lazy load function when DOM is loaded
-    document.addEventListener('DOMContentLoaded', lazyLoadVideos);
-
-    // Prevent zooming on double-tap (mobile)
-    document.addEventListener('dblclick', function(e) {
-      e.preventDefault();
-    }, { passive: false });
-
-    // Improved touch feedback for buttons
-    document.querySelectorAll('button, a').forEach(button => {
-      button.addEventListener('touchstart', function() {
-        this.style.transform = 'scale(0.95)';
-      });
-      
-      button.addEventListener('touchend', function() {
-        this.style.transform = '';
-      });
-    });
-  </script>
+    </script>
 
 </body>
 </html>
