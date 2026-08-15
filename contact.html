@@ -2,24 +2,312 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Contact Us | Aman Shree Gharelu Udhyog</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+    <title>Contact Us | Aman Shree Gharelu Udhyog - Premium Paver Blocks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== CONTACT PAGE SPECIFIC ===== */
+        /* ========================================
+           PREMIUM DESIGN - AMAN SHREE GHARELU UDHYOG
+           ======================================== */
+
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #5D4037;
+            --primary-dark: #3f2a1d;
+            --primary-light: #8D6E63;
+            --gold: #f1c40f;
+            --gold-dark: #d4a800;
+            --gold-light: #f7dc6f;
+            --bg-light: #f8f5f2;
+            --bg-white: #ffffff;
+            --text-dark: #2d2d2d;
+            --text-light: #6b6b6b;
+            --text-white: #ffffff;
+            --shadow: 0 10px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 15px 50px rgba(0,0,0,0.15);
+            --shadow-gold: 0 10px 30px rgba(241, 196, 15, 0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 16px;
+        }
+
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========================================
+           TOP BAR
+           ======================================== */
+
+        .top-bar {
+            background: var(--primary-dark);
+            color: var(--text-white);
+            padding: 10px 20px;
+            font-size: 13px;
+            border-bottom: 3px solid var(--gold);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-info {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .top-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d7ccc8;
+            transition: var(--transition);
+            font-size: 13px;
+        }
+
+        .top-info span:hover {
+            color: var(--gold);
+        }
+
+        .top-info i {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        .top-socials {
+            display: flex;
+            gap: 10px;
+        }
+
+        .top-socials a {
+            color: #d7ccc8;
+            font-size: 14px;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .top-socials a:hover {
+            color: var(--gold);
+            background: rgba(241, 196, 15, 0.15);
+            transform: translateY(-3px);
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .main-header {
+            background: var(--primary);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--text-white);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 26px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle:hover {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 60%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--primary-dark) !important;
+            padding: 8px 24px !important;
+            border-radius: 30px !important;
+            font-weight: 700 !important;
+            transition: var(--transition);
+        }
+
+        .btn-gold::after {
+            display: none !important;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+            color: var(--primary-dark) !important;
+        }
+
+        /* ========================================
+           BANNER
+           ======================================== */
+
+        .banner {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-white);
+        }
+
+        .banner .overlay {
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .banner .overlay h1 {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .banner .overlay h1 span {
+            color: var(--gold);
+        }
+
+        .banner .overlay p {
+            font-size: 1.2rem;
+            color: #d7ccc8;
+            margin-top: 10px;
+        }
+
+        /* ========================================
+           CONTACT SECTION
+           ======================================== */
+
+        .contact-section {
+            padding: 60px 0;
+        }
+
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
             gap: 40px;
-            padding: 60px 0;
         }
 
+        /* ===== CONTACT INFO ===== */
         .contact-info-box {
             background: var(--bg-white);
             padding: 35px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-info-box:hover {
+            box-shadow: var(--shadow-hover);
         }
 
         .contact-info-box h3 {
@@ -30,6 +318,11 @@
             border-bottom: 2px solid var(--gold);
         }
 
+        .contact-info-box h3 i {
+            color: var(--gold);
+            margin-right: 10px;
+        }
+
         .contact-item {
             display: flex;
             gap: 15px;
@@ -37,9 +330,13 @@
             align-items: flex-start;
         }
 
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
         .contact-item i {
             color: var(--gold);
-            font-size: 20px;
+            font-size: 18px;
             width: 40px;
             height: 40px;
             display: flex;
@@ -48,30 +345,44 @@
             background: rgba(241, 196, 15, 0.1);
             border-radius: 50%;
             flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover i {
+            background: var(--gold);
+            color: var(--text-white);
+            transform: scale(1.1);
         }
 
         .contact-item .content h4 {
             color: var(--primary);
             font-size: 1rem;
             margin-bottom: 3px;
+            font-weight: 700;
         }
 
         .contact-item .content p,
         .contact-item .content a {
             color: var(--text-light);
             font-size: 0.95rem;
+            transition: var(--transition);
         }
 
         .contact-item .content a:hover {
             color: var(--gold-dark);
         }
 
-        /* Form */
+        /* ===== FORM ===== */
         .form-box {
             background: var(--bg-white);
             padding: 35px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .form-box:hover {
+            box-shadow: var(--shadow-hover);
         }
 
         .form-box h3 {
@@ -83,8 +394,41 @@
         .form-box .subtitle {
             color: var(--text-light);
             margin-bottom: 25px;
+            font-size: 0.95rem;
         }
 
+        /* ===== ALERTS ===== */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== FORM FIELDS ===== */
         .form-group {
             margin-bottom: 20px;
         }
@@ -112,6 +456,7 @@
             transition: var(--transition);
             font-family: inherit;
             background: var(--bg-light);
+            color: var(--text-dark);
         }
 
         .form-group input:focus,
@@ -127,42 +472,36 @@
             resize: vertical;
         }
 
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px 20px;
+        .btn-submit {
+            background: var(--gold);
+            color: var(--primary-dark);
+            padding: 14px 30px;
+            border: none;
             border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #28a745;
-            animation: fadeIn 0.5s ease;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .success-message.show {
-            display: block;
+        .btn-submit:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
         }
 
-        .error-message {
-            display: none;
-            background: #f8d7da;
-            color: #721c24;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #dc3545;
-            animation: fadeIn 0.5s ease;
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        .error-message.show {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Map */
+        /* ===== MAP ===== */
         .map-container {
             margin-top: 40px;
             border-radius: var(--border-radius);
@@ -176,339 +515,677 @@
             border: none;
         }
 
+        /* ========================================
+           FOOTER
+           ======================================== */
+
+        footer {
+            background: var(--primary-dark);
+            color: #d7ccc8;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            margin-bottom: 12px;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #d7ccc8;
+            margin-bottom: 10px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+            padding-left: 8px;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-contact i {
+            color: var(--gold);
+            width: 20px;
+            font-size: 16px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            color: #d7ccc8;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .footer-socials a:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: translateY(-4px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            font-size: 14px;
+            color: #8d7a6e;
+        }
+
+        /* ========================================
+           FLOATING BUTTONS
+           ======================================== */
+
+        #topBtn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--gold);
+            color: var(--primary-dark);
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: none;
+            box-shadow: var(--shadow-gold);
+            transition: var(--transition);
+            z-index: 999;
+            animation: bounceUp 2s infinite;
+        }
+
+        #topBtn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        @keyframes bounceUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
         @media (max-width: 992px) {
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
-                padding: 40px 0;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .banner .overlay h1 {
+                font-size: 2.2rem;
             }
         }
 
         @media (max-width: 768px) {
+            .top-bar-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .top-info {
+                font-size: 12px;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
+                gap: 8px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+            }
+            .nav-links a::after {
+                display: none;
+            }
+            .banner {
+                height: 250px;
+            }
+            .banner .overlay h1 {
+                font-size: 1.8rem;
+            }
+            .banner .overlay p {
+                font-size: 1rem;
+            }
             .contact-info-box,
             .form-box {
                 padding: 25px 20px;
             }
-            
             .map-container iframe {
                 height: 300px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-contact {
+                justify-content: center;
+            }
+            .footer-socials {
+                justify-content: center;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 80px;
+                right: 20px;
+            }
+            #topBtn {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+                bottom: 20px;
+                right: 20px;
             }
         }
 
         @media (max-width: 480px) {
+            .top-info {
+                font-size: 11px;
+                gap: 8px;
+                flex-direction: column;
+            }
+            .top-socials a {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+            .logo {
+                font-size: 20px;
+            }
+            .banner {
+                height: 200px;
+            }
+            .banner .overlay h1 {
+                font-size: 1.4rem;
+            }
+            .banner .overlay p {
+                font-size: 0.9rem;
+            }
+            .contact-info-box,
+            .form-box {
+                padding: 20px 15px;
+            }
             .contact-item {
                 gap: 12px;
             }
-            
             .contact-item i {
                 width: 35px;
                 height: 35px;
                 font-size: 16px;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+            .btn-submit {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            .map-container iframe {
+                height: 220px;
+            }
+            .footer-socials a {
+                width: 38px;
+                height: 38px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .contact-item i {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+            .contact-item .content h4 {
+                font-size: 0.9rem;
+            }
+            .contact-item .content p,
+            .contact-item .content a {
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== TOP BAR ===== -->
-<div class="top-bar">
-    <div class="top-bar-container">
-        <div class="top-info">
-            <span><i class="fas fa-map-marker-alt"></i> Rajbiraj-11, Hanumannagar Road, Saptari</span>
-            <span><i class="fas fa-phone"></i> 9842820524, 9801502594</span>
-            <span><i class="fas fa-envelope"></i> amanshreeghareluudhyog@gmail.com</span>
-        </div>
-        <div class="top-socials">
-            <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/9801502594" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="mailto:amanshreeghareluudhyog@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-info">
+                <span><i class="fas fa-map-marker-alt"></i> Rajbiraj-11, Hanumannagar Road, Saptari</span>
+                <span><i class="fas fa-phone"></i> 9842820524, 9801502594</span>
+                <span><i class="fas fa-envelope"></i> amanshreeghareluudhyog@gmail.com</span>
+            </div>
+            <div class="top-socials">
+                <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="mailto:amanshreeghareluudhyog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- ===== MAIN HEADER ===== -->
-<header class="main-header">
-    <a href="index.html" class="logo">Aman <span>Shree</span></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <i class="fas fa-bars"></i>
-    </button>
-    <nav class="nav-links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a href="contact.html" class="btn-gold">Get Quote</a>
-    </nav>
-</header>
-
-<!-- ===== BANNER ===== -->
-<section class="banner">
-    <div class="banner-content">
-        <h1>Contact <span>Us</span></h1>
-        <p>We're here to answer any questions you may have about our products and services</p>
-    </div>
-</section>
-
-<!-- ===== CONTENT ===== -->
-<main class="container">
-    <div class="contact-grid">
-        <!-- Contact Info -->
-        <div class="contact-info-box">
-            <h3><i class="fas fa-address-card" style="color: var(--gold); margin-right: 10px;"></i> Get in Touch</h3>
-            
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div class="content">
-                    <h4>Office Address</h4>
-                    <p>Rajbiraj-11, Hanumannagar Road, Saptari, Nepal</p>
-                </div>
-            </div>
-            
-            <div class="contact-item">
-                <i class="fas fa-phone-alt"></i>
-                <div class="content">
-                    <h4>Phone Numbers</h4>
-                    <p><a href="tel:+9779842820524">9842820524</a> / <a href="tel:+9779801502594">9801502594</a></p>
-                </div>
-            </div>
-            
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <div class="content">
-                    <h4>Email Address</h4>
-                    <p><a href="mailto:amanshreeghareluudhyog@gmail.com">amanshreeghareluudhyog@gmail.com</a></p>
-                </div>
-            </div>
-            
-            <div class="contact-item">
-                <i class="fas fa-clock"></i>
-                <div class="content">
-                    <h4>Business Hours</h4>
-                    <p>Sunday - Friday: 7:00 AM - 7:00 PM</p>
-                    <p>Saturday: 7:00 AM - 5:00 PM</p>
-                </div>
-            </div>
-            
-            <div class="contact-item" style="margin-bottom: 0;">
-                <i class="fab fa-whatsapp"></i>
-                <div class="content">
-                    <h4>WhatsApp</h4>
-                    <p><a href="https://wa.me/9842820524" target="_blank">Chat with us on WhatsApp</a></p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Contact Form -->
-        <div class="form-box">
-            <h3>Send Us a Message</h3>
-            <p class="subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
-            
-            <div id="successMessage" class="success-message">
-                <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.
-            </div>
-            
-            <div id="errorMessage" class="error-message">
-                <i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again.
-            </div>
-            
-            <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
-                <div class="form-group">
-                    <label>Full Name <span class="required">*</span></label>
-                    <input type="text" name="name" id="name" placeholder="Enter your full name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Email Address <span class="required">*</span></label>
-                    <input type="email" name="email" id="email" placeholder="Enter your email address" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" name="phone" id="phone" placeholder="Enter your phone number">
-                </div>
-                
-                <div class="form-group">
-                    <label>Subject <span class="required">*</span></label>
-                    <select name="subject" id="subject" required>
-                        <option value="">Select a subject</option>
-                        <option value="Product Inquiry">Product Inquiry</option>
-                        <option value="Order Request">Order Request</option>
-                        <option value="Price Quote">Price Quote</option>
-                        <option value="Bulk Order">Bulk Order</option>
-                        <option value="General Question">General Question</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Your Message <span class="required">*</span></label>
-                    <textarea name="message" id="message" placeholder="Tell us about your requirements..." required></textarea>
-                </div>
-                
-                <button type="submit" class="btn-primary" id="submitBtn" style="width: 100%;">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-            </form>
-        </div>
-    </div>
-    
-    <!-- Map -->
-    <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3566.5316607!2d86.7705358!3d26.5316607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eefb00225b5b21%3A0xf6d50be164842429!2sAman%20shree%20Gharelu%20Udhyog!5e0!3m2!1sen!2snp!4v1620000000000!5m2!1sen!2snp" 
-            allowfullscreen="" 
-            loading="lazy">
-        </iframe>
-    </div>
-</main>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h3>Aman Shree Gharelu Udhyog</h3>
-            <p>Family-owned paver block manufacturer serving Rajbiraj and surrounding areas with quality products since 2081.</p>
-            <div class="footer-socials">
-                <a href="https://www.facebook.com/share/1G49CnN23d/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://wa.me/9801502594" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:amanshreeghareluudhyog@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
-                <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </div>
-        
-        <div class="footer-col">
-            <h3>Quick Links</h3>
+    <!-- ===== HEADER ===== -->
+    <header class="main-header">
+        <a href="index.html" class="logo">Aman Shree<span>Gharelu Udhyog</span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="catalogue.html">Catalogue</a>
-            <a href="about.html">About Us</a>
+            <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="contact.html" class="btn-gold">Get Quote</a>
+        </nav>
+    </header>
+
+    <!-- ===== BANNER ===== -->
+    <section class="banner">
+        <div class="overlay">
+            <h1>Contact <span>Us</span></h1>
+            <p>We're here to answer any questions you may have about our products and services</p>
         </div>
-        
-        <div class="footer-col">
-            <h3>Contact Info</h3>
-            <div class="footer-contact">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Rajbiraj-11, Hanumannagar Road, Saptari</span>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info-box">
+                    <h3><i class="fas fa-address-card"></i> Get in Touch</h3>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="content">
+                            <h4>Office Address</h4>
+                            <p>Rajbiraj-11, Hanumannagar Road, Saptari, Nepal</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="content">
+                            <h4>Phone Numbers</h4>
+                            <p><a href="tel:+9779842820524">9842820524</a> / <a href="tel:+9779801502594">9801502594</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="content">
+                            <h4>Email Address</h4>
+                            <p><a href="mailto:amanshreeghareluudhyog@gmail.com">amanshreeghareluudhyog@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="content">
+                            <h4>Business Hours</h4>
+                            <p>Sunday - Friday: 7:00 AM - 7:00 PM</p>
+                            <p>Saturday: 7:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item" style="margin-bottom: 0;">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="content">
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/9842820524" target="_blank">Chat with us on WhatsApp</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="form-box">
+                    <h3>Send Us a Message</h3>
+                    <p class="subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
+
+                    <div id="alertMessage" class="alert"></div>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Full Name <span class="required">*</span></label>
+                            <input type="text" name="name" id="name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address <span class="required">*</span></label>
+                            <input type="email" name="email" id="email" placeholder="Enter your email address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" id="phone" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Subject <span class="required">*</span></label>
+                            <select name="subject" id="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="Product Inquiry">Product Inquiry</option>
+                                <option value="Order Request">Order Request</option>
+                                <option value="Price Quote">Price Quote</option>
+                                <option value="Bulk Order">Bulk Order</option>
+                                <option value="General Question">General Question</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Your Message <span class="required">*</span></label>
+                            <textarea name="message" id="message" placeholder="Tell us about your requirements..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
-            <div class="footer-contact">
-                <i class="fas fa-phone"></i>
-                <span>9842820524, 9801502594</span>
-            </div>
-            <div class="footer-contact">
-                <i class="fas fa-envelope"></i>
-                <span>amanshreeghareluudhyog@gmail.com</span>
+
+            <!-- Map -->
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3566.5316607!2d86.7705358!3d26.5316607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eefb00225b5b21%3A0xf6d50be164842429!2sAman%20shree%20Gharelu%20Udhyog!5e0!3m2!1sen!2snp!4v1620000000000!5m2!1sen!2snp"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
             </div>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Aman Shree Gharelu Udhyog. All Rights Reserved.</p>
-    </div>
-</footer>
+    </section>
 
-<!-- ===== FLOATING BUTTONS ===== -->
-<a href="https://wa.me/9842820524" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Aman Shree Gharelu Udhyog</h3>
+                <p>Family-owned paver block manufacturer serving Rajbiraj and surrounding areas with quality products since 2081.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/9801502594" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:amanshreeghareluudhyog@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://maps.app.goo.gl/StYxad8awp3XWP6a7" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+                    <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="catalogue.html">Catalogue</a>
+                <a href="about.html">About Us</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <div class="footer-contact">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Rajbiraj-11, Hanumannagar Road, Saptari</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-phone"></i>
+                    <span>9842820524, 9801502594</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>amanshreeghareluudhyog@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aman Shree Gharelu Udhyog. All Rights Reserved. | Made with <i class="fas fa-heart" style="color: var(--gold);"></i> in Nepal</p>
+        </div>
+    </footer>
 
-<button onclick="topFunction()" id="topBtn" title="Go to top">
-    <i class="fas fa-arrow-up"></i>
-</button>
+    <!-- ===== FLOATING BUTTONS ===== -->
+    <a href="https://wa.me/9842820524" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<!-- ===== SCRIPTS ===== -->
-<script>
-    // ===== MOBILE MENU TOGGLE =====
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
+    <button onclick="topFunction()" id="topBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-    navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        navToggle.innerHTML = navLinks.classList.contains('open') ? 
-            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-    // Close menu on outside click
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.main-header') && navLinks.classList.contains('open')) {
-            navLinks.classList.remove('open');
-            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
+            // ===== MOBILE MENU =====
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
 
-    // Close menu on link click
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                navLinks.classList.remove('open');
-                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('open');
+                    navToggle.innerHTML = navLinks.classList.contains('open') ?
+                        '<i class="fas fa-times"></i>' :
+                        '<i class="fas fa-bars"></i>';
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.main-header') && navLinks.classList.contains('open')) {
+                        navLinks.classList.remove('open');
+                        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+
+                document.querySelectorAll('.nav-links a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            navLinks.classList.remove('open');
+                            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    });
+                });
             }
-        });
-    });
 
-    // ===== BACK TO TOP =====
-    window.onscroll = function() {
-        document.getElementById("topBtn").style.display =
-            document.body.scrollTop > 200 || document.documentElement.scrollTop > 200
-            ? "block" : "none";
-    };
-
-    function topFunction() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // ===== CONTACT FORM =====
-    const form = document.getElementById('contactForm');
-    const successMsg = document.getElementById('successMessage');
-    const errorMsg = document.getElementById('errorMessage');
-    const submitBtn = document.getElementById('submitBtn');
-
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            const formData = new FormData(form);
-            
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
+            // ===== BACK TO TOP =====
+            window.onscroll = function() {
+                const topBtn = document.getElementById('topBtn');
+                if (topBtn) {
+                    topBtn.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ?
+                        'block' : 'none';
                 }
-            })
-            .then(response => {
-                if (response.ok) {
-                    successMsg.classList.add('show');
-                    errorMsg.classList.remove('show');
-                    form.reset();
-                    
-                    setTimeout(() => {
-                        successMsg.classList.remove('show');
-                    }, 5000);
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(() => {
-                errorMsg.classList.add('show');
-                successMsg.classList.remove('show');
-                
+            };
+
+            window.topFunction = function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // ===== CONTACT FORM - Formspree =====
+            const form = document.getElementById('contactForm');
+            const alertDiv = document.getElementById('alertMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Get form values
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value.trim();
+
+                    // Validate
+                    if (!name || name.length < 2) {
+                        showAlert('Please enter your full name (minimum 2 characters)', 'error');
+                        return;
+                    }
+
+                    if (!email || !email.includes('@') || !email.includes('.')) {
+                        showAlert('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    if (!subject) {
+                        showAlert('Please select a subject', 'error');
+                        return;
+                    }
+
+                    if (!message || message.length < 10) {
+                        showAlert('Please enter a message (minimum 10 characters)', 'error');
+                        return;
+                    }
+
+                    // Disable button
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                    // Prepare data for Formspree
+                    const formData = new FormData();
+                    formData.append('name', name);
+                    formData.append('email', email);
+                    formData.append('phone', phone);
+                    formData.append('subject', subject);
+                    formData.append('message', message);
+
+                    // Send to Formspree
+                    fetch('https://formspree.io/f/myyqgvqj', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            showAlert('✅ Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+                            form.reset();
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                        } else {
+                            throw new Error('Network response was not ok');
+                        }
+                    })
+                    .catch(() => {
+                        showAlert('❌ Oops! Something went wrong. Please try again later.', 'error');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    });
+                });
+            }
+
+            function showAlert(message, type) {
+                alertDiv.textContent = message;
+                alertDiv.className = 'alert show ' + type;
                 setTimeout(() => {
-                    errorMsg.classList.remove('show');
-                }, 5000);
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-            });
+                    alertDiv.className = 'alert';
+                }, 6000);
+            }
+
         });
-    }
-</script>
+    </script>
 
 </body>
 </html>
