@@ -358,27 +358,23 @@
         }
 
         .blog-image {
-            height: 200px;
+            height: 60px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: var(--primary);
             display: flex;
             align-items: center;
-            justify-content: center;
-        }
-
-        .blog-image .placeholder-icon {
-            font-size: 4rem;
-            color: rgba(255,255,255,0.2);
+            justify-content: space-between;
+            padding: 0 20px;
         }
 
         .blog-image .video-label {
-            position: absolute;
-            top: 12px;
-            right: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             background: var(--gold);
             color: var(--primary-dark);
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 700;
@@ -388,19 +384,16 @@
         }
 
         .blog-image .platform-icon {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             background: rgba(0,0,0,0.7);
             color: white;
-            padding: 6px 12px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
             z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .blog-image .platform-icon i {
@@ -456,6 +449,50 @@
 
         .read-more:hover i {
             transform: translateX(5px);
+        }
+
+        /* ===== VIDEO EMBED INSIDE BLOG CARD ===== */
+        .blog-video-wrapper {
+            margin-top: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .blog-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .blog-content .video-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #000;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 12px;
+        }
+
+        .blog-content .video-link-btn i {
+            font-size: 15px;
+        }
+
+        .blog-content .video-link-btn:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         /* ========================================
@@ -849,7 +886,16 @@
                 padding: 18px;
             }
             .blog-image {
-                height: 160px;
+                height: 50px;
+                padding: 0 14px;
+            }
+            .blog-image .video-label {
+                font-size: 9px;
+                padding: 2px 10px;
+            }
+            .blog-image .platform-icon {
+                font-size: 10px;
+                padding: 2px 10px;
             }
             .footer-socials a {
                 width: 38px;
@@ -916,119 +962,265 @@
     <section class="blog-section">
         <div class="container">
             <div class="section-header">
-                <span class="badge">Latest Articles</span>
-                <h2>Insights &amp; <span>Updates</span></h2>
-                <p>Stay updated with our latest projects, tips, and industry news</p>
+                <span class="badge">Latest Videos</span>
+                <h2>TikTok <span>Updates</span></h2>
+                <p>Watch our latest project videos and behind-the-scenes content</p>
             </div>
 
             <div class="blog-grid">
-                <!-- Blog 1: TikTok - Paver Installation -->
+
+                <!-- ============================================================ -->
+                <!-- BLOG 1 – Advertisement Video                                  -->
+                <!-- ============================================================ -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
                         <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
-                        <div class="placeholder-icon"><i class="fas fa-industry"></i></div>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="far fa-calendar-alt"></i> June 25, 2025</span>
                             <span><i class="far fa-user"></i> Admin</span>
                         </div>
-                        <h3>How to Install Paver Blocks Properly | Saketa Park Project</h3>
-                        <p>Watch our step-by-step guide on proper paver block installation techniques at Rajbiraj-7 Saketa Park. Learn from our experts!</p>
-                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" class="read-more">Watch on TikTok <i class="fas fa-arrow-right"></i></a>
+                        <h3>🎬 Paver Blocks Advertisement</h3>
+                        <p>Watch our official advertisement showcasing premium paver blocks from Amanshree Gharelu Udhyog. Quality you can trust!</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7645957573127998740"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7645957573127998740" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
                     </div>
                 </article>
 
-                <!-- Blog 2: Facebook - Completed Project -->
+                <!-- ============================================================ -->
+                <!-- BLOG 2 – New Government Site                                  -->
+                <!-- ============================================================ -->
                 <article class="blog-card">
                     <div class="blog-image">
-                        <span class="video-label"><i class="fas fa-check-circle"></i> PROJECT</span>
-                        <span class="platform-icon"><i class="fab fa-facebook"></i> Facebook</span>
-                        <div class="placeholder-icon"><i class="fas fa-hard-hat"></i></div>
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="far fa-calendar-alt"></i> June 18, 2025</span>
                             <span><i class="far fa-user"></i> Admin</span>
                         </div>
-                        <h3>Premium Paver Installation at Lilja Tole, Rajbiraj</h3>
-                        <p>Check out our latest completed project at Lilja Tole featuring premium interlocking paver blocks with stunning red and yellow patterns.</p>
-                        <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" class="read-more">View on Facebook <i class="fas fa-arrow-right"></i></a>
+                        <h3>🏛️ New Government Site Project</h3>
+                        <p>Premium paver block installation at a new government site. Durable and high-quality paving for public infrastructure.</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7553122380785224967"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7553122380785224967" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
                     </div>
                 </article>
 
-                <!-- Blog 3: TikTok - Maintenance Tips -->
+                <!-- ============================================================ -->
+                <!-- BLOG 3 – Park Site                                            -->
+                <!-- ============================================================ -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
                         <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
-                        <div class="placeholder-icon"><i class="fas fa-tools"></i></div>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="far fa-calendar-alt"></i> June 10, 2025</span>
                             <span><i class="far fa-user"></i> Admin</span>
                         </div>
-                        <h3>How to Maintain Your Paver Blocks | Expert Tips</h3>
-                        <p>Essential video tutorial showing techniques to keep your paver blocks looking new and performing well for years to come.</p>
-                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" class="read-more">Watch on TikTok <i class="fas fa-arrow-right"></i></a>
+                        <h3>🌳 Park Site Paver Installation</h3>
+                        <p>Beautiful interlocking paver block installation at a public park. Creating stunning outdoor spaces for the community.</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7528303596195106066"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7528303596195106066" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
                     </div>
                 </article>
 
-                <!-- Blog 4: Facebook - New Design -->
+                <!-- ============================================================ -->
+                <!-- BLOG 4 – Lilja Tole Site                                      -->
+                <!-- ============================================================ -->
                 <article class="blog-card">
                     <div class="blog-image">
-                        <span class="video-label"><i class="fas fa-palette"></i> DESIGN</span>
-                        <span class="platform-icon"><i class="fab fa-facebook"></i> Facebook</span>
-                        <div class="placeholder-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="far fa-calendar-alt"></i> June 2, 2025</span>
                             <span><i class="far fa-user"></i> Admin</span>
                         </div>
-                        <h3>Creative Landscaping Ideas Using Paver Blocks</h3>
-                        <p>Discover innovative ways to use paver blocks in your garden and outdoor spaces to create beautiful, functional landscapes.</p>
-                        <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" class="read-more">View on Facebook <i class="fas fa-arrow-right"></i></a>
+                        <h3>🏘️ Lilja Tole Premium Installation</h3>
+                        <p>Premium interlocking paver blocks at Lilja Tole, Rajbiraj. Stunning red and yellow patterns for a beautiful finish.</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7511690629500488968"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7511690629500488968" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
                     </div>
                 </article>
 
-                <!-- Blog 5: TikTok - Behind the Scenes -->
+                <!-- ============================================================ -->
+                <!-- BLOG 5 – Site Work 1                                          -->
+                <!-- ============================================================ -->
                 <article class="blog-card">
                     <div class="blog-image">
-                        <span class="video-label"><i class="fas fa-video"></i> BTS</span>
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
                         <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
-                        <div class="placeholder-icon"><i class="fas fa-cogs"></i></div>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="far fa-calendar-alt"></i> May 25, 2025</span>
                             <span><i class="far fa-user"></i> Admin</span>
                         </div>
-                        <h3>Behind the Scenes: Paver Block Manufacturing Process</h3>
-                        <p>Take a look at our manufacturing process - from raw materials to finished premium paver blocks ready for delivery.</p>
-                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog" target="_blank" class="read-more">Watch on TikTok <i class="fas fa-arrow-right"></i></a>
+                        <h3>🔧 Site Work in Progress</h3>
+                        <p>Behind the scenes of our paver block installation process. Watch our skilled team at work on site.</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7521611994219154695"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7521611994219154695" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
                     </div>
                 </article>
 
-                <!-- Blog 6: Facebook - Customer Testimonial -->
+                <!-- ============================================================ -->
+                <!-- BLOG 6 – Factory Manufacturing                                -->
+                <!-- ============================================================ -->
                 <article class="blog-card">
                     <div class="blog-image">
-                        <span class="video-label"><i class="fas fa-star"></i> REVIEW</span>
-                        <span class="platform-icon"><i class="fab fa-facebook"></i> Facebook</span>
-                        <div class="placeholder-icon"><i class="fas fa-user-check"></i></div>
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="far fa-calendar-alt"></i> May 15, 2025</span>
                             <span><i class="far fa-user"></i> Admin</span>
                         </div>
-                        <h3>Happy Customer Stories: Paver Block Transformations</h3>
-                        <p>Real feedback from our valued customers who transformed their spaces with our premium paver blocks.</p>
-                        <a href="https://www.facebook.com/people/Aman-Shree-Gharelu-Udhyog/61582469552470/" target="_blank" class="read-more">View on Facebook <i class="fas fa-arrow-right"></i></a>
+                        <h3>🏭 Factory: Paver Block Manufacturing</h3>
+                        <p>Take a look inside our manufacturing process — from raw materials to finished premium paver blocks ready for delivery.</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7655943521840401685"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7655943521840401685" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
                     </div>
                 </article>
+
+                <!-- ============================================================ -->
+                <!-- BLOG 7 – Site Work 2                                          -->
+                <!-- ============================================================ -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> May 8, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>🛠️ Site Work – Installation in Progress</h3>
+                        <p>Another exciting paver block installation project underway. Watch our team delivering quality work on site.</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7520146307504278802"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7520146307504278802" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ============================================================ -->
+                <!-- BLOG 8 – Factory Production                                   -->
+                <!-- ============================================================ -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> May 1, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>🏭 Factory Operations – Paver Production</h3>
+                        <p>Another look inside our factory showing the production process of high-quality paver blocks.</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7507254900254952711"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7507254900254952711" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ============================================================ -->
+                <!-- BLOG 9 – Factory Running                                      -->
+                <!-- ============================================================ -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <span class="video-label"><i class="fas fa-video"></i> VIDEO</span>
+                        <span class="platform-icon"><i class="fab fa-tiktok"></i> TikTok</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 25, 2025</span>
+                            <span><i class="far fa-user"></i> Admin</span>
+                        </div>
+                        <h3>⚙️ Factory in Action – Full Production Mode</h3>
+                        <p>Watch our factory running at full capacity! Premium paver blocks being manufactured with precision and quality.</p>
+                        <div class="blog-video-wrapper">
+                            <iframe 
+                                src="https://www.tiktok.com/embed/v2/7656738186391047445"
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.tiktok.com/@amanshree_gharelu_udhyog/video/7656738186391047445" target="_blank" class="video-link-btn">
+                            <i class="fab fa-tiktok"></i> Watch on TikTok
+                        </a>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
